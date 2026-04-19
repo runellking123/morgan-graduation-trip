@@ -1,4 +1,8 @@
-/* Eat & Explore — visitor guide by category */
+/* Eat & Explore — gallery-style visitor guide */
+
+.explore-page--gallery .page-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
 
 .explore-toc {
   display: flex;
@@ -293,12 +297,35 @@
   height: 22px;
 }
 
-/* Card grids */
+/* Card grids — gallery layout */
 .explore-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.explore-page--gallery .explore-grid--cat {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 20px;
+}
+
+@media (min-width: 700px) {
+  .explore-page--gallery .explore-grid--cat {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .explore-page--gallery .explore-grid--cat {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .explore-page--gallery .explore-grid--cat {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .explore-card-wrap {
@@ -326,6 +353,51 @@
   animation: exploreCardIn 0.32s ease both;
 }
 
+.place-card.place-card--gallery {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(15, 29, 54, 0.08);
+}
+
+.place-card.place-card--gallery:hover {
+  box-shadow: 0 12px 36px rgba(15, 29, 54, 0.12);
+}
+
+.place-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(145deg, var(--gray-100) 0%, var(--gray-200) 100%);
+  overflow: hidden;
+}
+
+.place-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 29, 54, 0.65) 0%, rgba(15, 29, 54, 0.08) 55%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.place-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.place-card.place-card--gallery:hover .place-card__img {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .place-card.place-card--gallery:hover .place-card__img {
+    transform: none;
+  }
+}
+
 @keyframes exploreCardIn {
   from {
     opacity: 0;
@@ -348,6 +420,11 @@
   border-radius: 12px;
   pointer-events: none;
   background: rgba(248, 249, 250, 0.35);
+  z-index: 3;
+}
+
+.place-card.place-card--gallery.is-visited::after {
+  border-radius: 14px;
 }
 
 .place-card__badge {
@@ -365,6 +442,15 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.place-card--gallery .place-card__badge {
+  top: auto;
+  bottom: 12px;
+  left: 12px;
+  z-index: 3;
+  max-width: calc(100% - 24px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .place-card__badge--dining {
@@ -388,6 +474,13 @@
   padding-top: 28px;
 }
 
+.place-card--gallery .place-card__body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .place-card__name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 18px;
@@ -406,6 +499,11 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.place-card--gallery .place-card__loc {
+  -webkit-line-clamp: 1;
+  font-size: 12px;
 }
 
 .place-card__stars {
@@ -438,6 +536,12 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex: 1;
+}
+
+.place-card--gallery .place-card__desc {
+  font-size: 13px;
+  -webkit-line-clamp: 2;
+  margin-bottom: 12px;
 }
 
 .place-card__actions {
@@ -702,8 +806,8 @@
   background: var(--gray-50);
 }
 
-@media (max-width: 768px) {
-  .explore-grid {
+@media (max-width: 699px) {
+  .explore-page--gallery .explore-grid.explore-grid--cat {
     grid-template-columns: 1fr;
   }
 }

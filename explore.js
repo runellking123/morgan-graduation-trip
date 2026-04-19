@@ -654,6 +654,48 @@
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
+  /* Decorative photos only — swap for real venue photos anytime via place.image */
+  var SECTION_GALLERY_IMAGES = {
+    eat: [
+      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=720&h=480&fit=crop&q=80',
+    ],
+    water: [
+      'https://images.unsplash.com/photo-1544551763-393ef8881899?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1506905925346-21bfe4d38e2f?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1439066615861-d1af74d74900?w=720&h=480&fit=crop&q=80',
+    ],
+    play: [
+      'https://images.unsplash.com/photo-1577081329086-081f9c924e8f?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1566125882502-1b3e03475c79?w=720&h=480&fit=crop&q=80',
+    ],
+    outdoors: [
+      'https://images.unsplash.com/photo-1507525428030-b723cf961d3e?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1441974231531-c6227db76b7e?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1469474968028-56623fec02aa?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1470071459603-411ffdc67908?w=720&h=480&fit=crop&q=80',
+    ],
+    shop: [
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1567443024551-f3e3cc21e63f?w=720&h=480&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=720&h=480&fit=crop&q=80',
+    ],
+  };
+
+  function galleryImageUrl(place) {
+    if (place.image) return place.image;
+    var list = SECTION_GALLERY_IMAGES[place.sectionKey];
+    if (!list || !list.length) list = SECTION_GALLERY_IMAGES.eat;
+    var h = 0;
+    for (var i = 0; i < place.id.length; i++) {
+      h += place.id.charCodeAt(i);
+    }
+    return list[h % list.length];
+  }
+
   function createPlaceWrap(place) {
     var st = getState(place.id);
     var badgeClass =
@@ -670,17 +712,25 @@
     wrap.dataset.placeId = place.id;
 
     var card = document.createElement('article');
-    card.className = 'card place-card' + (st.visited ? ' is-visited' : '');
+    card.className =
+      'card place-card place-card--gallery' + (st.visited ? ' is-visited' : '');
     card.tabIndex = 0;
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', 'Details for ' + place.name);
 
     card.innerHTML =
+      '<div class="place-card__media">' +
+      '<img class="place-card__img" src="' +
+      escapeAttr(galleryImageUrl(place)) +
+      '" alt="' +
+      escapeAttr(place.name) +
+      '" loading="lazy" decoding="async" width="720" height="480" />' +
       '<span class="place-card__badge ' +
       badgeClass +
       '">' +
       escapeHtml(badgeText) +
       '</span>' +
+      '</div>' +
       '<div class="place-card__body">' +
       '<h3 class="place-card__name">' +
       escapeHtml(place.name) +
