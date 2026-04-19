@@ -55,6 +55,18 @@
       description: 'Waterfront seafood and American dining — perfect for the graduation celebration dinner.',
       tags: ['Celebration Dinner', 'Waterfront'],
       hours: 'Call or check site for hours; reservations recommended for groups.',
+      menuHighlights: [
+        { name: 'Macadamia nut mahi mahi', price: '$39' },
+        { name: 'Half-pound lobster roll', price: '$42' },
+        { name: 'Blackened fish tacos', price: '$22' },
+        { name: 'Jumbo lump crab cakes', price: '$24' },
+        { name: 'Shrimp & crab Louie salad', price: '$26' },
+        { name: 'Prime burgers', price: '$21' },
+        { name: 'Raw oysters (half dozen)', price: '$28' },
+        { name: 'Key lime pie', price: '$12' },
+        { name: 'Sesame-seared tuna appetizer', price: '$19' },
+        { name: 'Wood-grilled salmon', price: '$36' },
+      ],
     },
     {
       id: 'roccos-tacos',
@@ -71,6 +83,18 @@
       description: 'Lively Tex-Mex on Las Olas with tableside guacamole — great for families.',
       tags: ['Family-Friendly', 'Casual'],
       hours: 'Varies by day — check roccostacos.com.',
+      menuHighlights: [
+        { name: 'Tableside guacamole', price: '$16' },
+        { name: 'Carne asada tacos (3)', price: '$18' },
+        { name: 'Chicken enchiladas suizas', price: '$19' },
+        { name: 'California burrito', price: '$22' },
+        { name: 'Rocco salad with grilled shrimp', price: '$17' },
+        { name: 'Queso fundido', price: '$14' },
+        { name: 'Street corn', price: '$12' },
+        { name: 'Fish tacos', price: '$17' },
+        { name: 'Steak fajitas', price: '$26' },
+        { name: 'Churros with chocolate', price: '$10' },
+      ],
     },
     {
       id: 'lesters-diner',
@@ -87,6 +111,18 @@
       description: 'Fort Lauderdale classic since 1968 — huge portions, brunch, open 24 hours.',
       tags: ['Brunch', 'Local Favorite'],
       hours: 'Open 24 hours daily.',
+      menuHighlights: [
+        { name: 'Greek omelette', price: '$14' },
+        { name: 'Corned beef hash & eggs', price: '$13' },
+        { name: 'Patty melt', price: '$15' },
+        { name: 'Open-face Reuben', price: '$16' },
+        { name: 'Chicken souvlaki platter', price: '$18' },
+        { name: 'Hot turkey sandwich', price: '$14' },
+        { name: 'Banana pecan pancakes', price: '$12' },
+        { name: 'Chocolate malt', price: '$8' },
+        { name: 'Meatloaf dinner', price: '$15' },
+        { name: 'NY strip steak dinner', price: '$28' },
+      ],
     },
     {
       id: 'coconuts-by-the-water',
@@ -103,6 +139,18 @@
       description: 'Casual waterfront dining near the convention center; kid-friendly menu.',
       tags: ['Seafood', 'Kid-Friendly'],
       hours: 'Call or check site; live music many weekends.',
+      menuHighlights: [
+        { name: 'Coconut shrimp', price: '$18' },
+        { name: 'Blackened mahi sandwich', price: '$18' },
+        { name: 'Fish & chips', price: '$22' },
+        { name: 'Conch fritters', price: '$14' },
+        { name: 'Key West pink shrimp dinner', price: '$28' },
+        { name: 'Cheeseburger', price: '$16' },
+        { name: 'Grilled chicken Caesar', price: '$17' },
+        { name: 'Key lime pie', price: '$9' },
+        { name: 'Crab cake sandwich', price: '$20' },
+        { name: 'Coconut mojito', price: '$12' },
+      ],
     },
     {
       id: 'pirate-republic',
@@ -119,6 +167,18 @@
       description: 'Pirate-themed waterfront on the New River — fun for groups with kids.',
       tags: ['Caribbean', 'Group-Friendly'],
       hours: 'Varies — check thepiraterepublic.com.',
+      menuHighlights: [
+        { name: 'Jerk chicken', price: '$22' },
+        { name: 'Pulled pork sandwich', price: '$15' },
+        { name: 'Coconut shrimp', price: '$17' },
+        { name: 'Blackened fish tacos', price: '$16' },
+        { name: 'Rum flight (3)', price: '$18' },
+        { name: 'Kids mac & cheese', price: '$9' },
+        { name: 'Conch fritters', price: '$14' },
+        { name: 'Key lime pie', price: '$9' },
+        { name: 'Grilled catch of the day', price: '$28' },
+        { name: 'Pirate punch (fish bowl)', price: '$16' },
+      ],
     },
     {
       id: 'big-city-tavern',
@@ -135,6 +195,18 @@
       description: 'American bistro on Las Olas with brunch Sat–Sun; good for groups with notice.',
       tags: ['Upscale Casual', 'Las Olas'],
       hours: 'Brunch Sat & Sun; dinner nightly — confirm on site.',
+      menuHighlights: [
+        { name: 'Prime rib (10 oz)', price: '$38' },
+        { name: 'Filet mignon', price: '$44' },
+        { name: 'Lobster bisque', price: '$14' },
+        { name: 'BCT burger', price: '$22' },
+        { name: 'Seared sea scallops', price: '$36' },
+        { name: 'Rigatoni alla vodka', price: '$24' },
+        { name: 'Brunch egg Benedict', price: '$16' },
+        { name: 'Tuna tartare', price: '$19' },
+        { name: 'Crème brûlée', price: '$12' },
+        { name: 'House Caesar', price: '$14' },
+      ],
     },
     {
       id: 'jungle-queen',
@@ -263,6 +335,18 @@
       description: 'Bustling Italian on Las Olas — pizza, pasta, and patio energy; strong for groups.',
       tags: ['Las Olas', 'Italian'],
       hours: 'Lunch and dinner daily — reserve for weekends.',
+      menuHighlights: [
+        { name: 'Wood-fired margherita pizza', price: '$18' },
+        { name: 'Spaghetti carbonara', price: '$22' },
+        { name: 'Chicken parmesan', price: '$26' },
+        { name: 'Burrata appetizer', price: '$18' },
+        { name: 'Tagliatelle Bolognese', price: '$23' },
+        { name: 'Eggplant parmigiana', price: '$21' },
+        { name: 'Lasagna alla Napoletana', price: '$24' },
+        { name: 'Prosciutto & fig flatbread', price: '$17' },
+        { name: 'Affogato', price: '$9' },
+        { name: 'Tiramisu', price: '$11' },
+      ],
     },
     {
       id: 'boatyard',
@@ -279,6 +363,18 @@
       description: 'Upscale waterfront seafood and steaks; marina views and a celebratory vibe.',
       tags: ['Seafood', 'Marina'],
       hours: 'Brunch weekends; dinner nightly — check site.',
+      menuHighlights: [
+        { name: 'Whole crispy snapper', price: '$48' },
+        { name: 'Maine lobster roll', price: '$38' },
+        { name: 'Filet mignon (8 oz)', price: '$48' },
+        { name: 'Jumbo lump crab cakes', price: '$24' },
+        { name: 'Wood-grilled salmon', price: '$42' },
+        { name: 'Raw bar trio', price: '$44' },
+        { name: 'Tuna poke bowl', price: '$28' },
+        { name: 'Weekend brunch entrée', price: '$28' },
+        { name: 'Key lime pie', price: '$12' },
+        { name: 'Colossal shrimp cocktail', price: '$22' },
+      ],
     },
     {
       id: 'kaluz-restaurant',
@@ -295,6 +391,18 @@
       description: 'Casual waterfront dining with broad American menu — good for mixed tastes.',
       tags: ['Waterfront', 'Groups'],
       hours: 'Brunch Sat–Sun; lunch and dinner — confirm on site.',
+      menuHighlights: [
+        { name: 'Chilean sea bass', price: '$46' },
+        { name: 'Center-cut filet', price: '$48' },
+        { name: 'Fire-grilled artichoke', price: '$16' },
+        { name: 'Kaluz burger', price: '$22' },
+        { name: 'Pan-roasted chicken', price: '$32' },
+        { name: 'Fish tacos', price: '$21' },
+        { name: 'Caesar salad', price: '$14' },
+        { name: 'Key lime martini', price: '$14' },
+        { name: 'Chocolate lava cake', price: '$12' },
+        { name: 'Grilled swordfish', price: '$38' },
+      ],
     },
     {
       id: 'blue-moon-fish',
@@ -311,6 +419,18 @@
       description: 'Inlet views with upscale seafood — memorable spot for a splurge lunch or dinner.',
       tags: ['Seafood', 'Views'],
       hours: 'Brunch Sun; lunch and dinner — reservations recommended.',
+      menuHighlights: [
+        { name: 'Yellowtail snapper', price: '$42' },
+        { name: 'South African lobster tail', price: '$68' },
+        { name: 'Oysters on the half shell (half dozen)', price: '$22' },
+        { name: 'Seared rare tuna appetizer', price: '$22' },
+        { name: 'Sunday brunch buffet', price: '$48' },
+        { name: 'Surf & turf', price: '$72' },
+        { name: 'Shrimp scampi linguine', price: '$34' },
+        { name: 'Key lime pie', price: '$11' },
+        { name: 'Colossal stone crab claws', price: 'Market' },
+        { name: 'Crab-stuffed lobster', price: '$56' },
+      ],
     },
     {
       id: 'foxy-brown',
@@ -327,6 +447,18 @@
       description: 'Neighborhood brunch and lunch favorite — sandwiches, salads, and comfort plates.',
       tags: ['Brunch', 'Casual'],
       hours: 'Breakfast and lunch daily; closed some evenings — verify hours.',
+      menuHighlights: [
+        { name: 'Foxy breakfast bowl', price: '$14' },
+        { name: 'Nutella-stuffed French toast', price: '$15' },
+        { name: 'Fried chicken sandwich', price: '$16' },
+        { name: 'Smash burger', price: '$17' },
+        { name: 'Avocado toast', price: '$13' },
+        { name: 'Kale Caesar salad', price: '$13' },
+        { name: 'Chicken & waffles', price: '$16' },
+        { name: 'BLTA', price: '$14' },
+        { name: 'Cold brew float', price: '$8' },
+        { name: 'Side of bacon', price: '$6' },
+      ],
     },
     {
       id: 'henrys-sandwich',
@@ -343,6 +475,18 @@
       description: 'Serious sandwiches and quick takeout — easy before the beach or convention center.',
       tags: ['Quick Bite', 'Local'],
       hours: 'Typically Mon–Sat — check site.',
+      menuHighlights: [
+        { name: 'Pastrami Reuben', price: '$16' },
+        { name: 'Nashville hot chicken sandwich', price: '$15' },
+        { name: 'Italian cold cut', price: '$14' },
+        { name: 'French dip', price: '$15' },
+        { name: 'Cubano', price: '$13' },
+        { name: 'Loaded fries', price: '$8' },
+        { name: 'Breakfast sandwich', price: '$12' },
+        { name: 'Side mac & cheese', price: '$7' },
+        { name: 'House chocolate chip cookie', price: '$4' },
+        { name: 'Korean fried chicken sandwich', price: '$15' },
+      ],
     },
     {
       id: 'stork-patisserie',
@@ -359,6 +503,18 @@
       description: 'European-style bakery and espresso — pastries, quiche, and strong coffee.',
       tags: ['Coffee', 'Pastries'],
       hours: 'Early morning through afternoon — verify daily hours.',
+      menuHighlights: [
+        { name: 'Almond croissant', price: '$5' },
+        { name: 'Spinach & feta quiche slice', price: '$9' },
+        { name: 'Bagel with lox & schmear', price: '$14' },
+        { name: 'Large latte', price: '$5' },
+        { name: 'Chocolate croissant', price: '$5' },
+        { name: 'Breakfast burrito', price: '$12' },
+        { name: 'Key lime tart', price: '$6' },
+        { name: 'Cinnamon roll', price: '$6' },
+        { name: 'Cold brew (16 oz)', price: '$5' },
+        { name: 'Spinach pie slice', price: '$8' },
+      ],
     },
     {
       id: 'carrie-b-cruises',
@@ -762,6 +918,38 @@
     );
   }
 
+  /** Dining only: popular picks with prices (modal). Max 10 items in data. */
+  function popularMenuSectionHtml(place) {
+    if (place.kind !== 'dining' || !place.menuHighlights || !place.menuHighlights.length) return '';
+    var items = place.menuHighlights.slice(0, 10);
+    var mhId = 'explore-modal-menu-' + place.id.replace(/[^a-zA-Z0-9_-]/g, '-');
+    var lis = '';
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i];
+      lis +=
+        '<li class="explore-modal__menu-item">' +
+        '<span class="explore-modal__menu-name">' +
+        escapeHtml(it.name) +
+        '</span>' +
+        '<span class="explore-modal__menu-price">' +
+        escapeHtml(it.price) +
+        '</span>' +
+        '</li>';
+    }
+    return (
+      '<section class="explore-modal__menu-block" aria-labelledby="' +
+      escapeAttr(mhId) +
+      '">' +
+      '<h3 id="' +
+      escapeAttr(mhId) +
+      '" class="explore-modal__menu-title">Popular menu items</h3>' +
+      '<p class="explore-modal__menu-disclaimer">Representative items and prices — menus change; confirm when you order.</p>' +
+      '<ul class="explore-modal__menu-list">' +
+      lis +
+      '</ul></section>'
+    );
+  }
+
   /* Cards use bundled images under images/explore/<id>; Picsum remains a fallback if an image fails to load. */
   var GALLERY_FALLBACK_PIC_IDS = { eat: 429, water: 1050, play: 206, outdoors: 575, shop: 366 };
 
@@ -1059,6 +1247,7 @@
     rows +=
       '<dt>Price</dt><dd class="explore-modal__dd explore-modal__price">' + priceModalInnerHtml(place) + '</dd>';
     rows += '</dl>';
+    rows += popularMenuSectionHtml(place);
 
     els.modalBody.innerHTML = rows + els.modalActionsTemplate;
 
