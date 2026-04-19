@@ -615,9 +615,11 @@
   }
 
   @media (max-width: 480px) {
+    html, body { overflow-x: hidden; }
+    .site-header { padding: 10px 14px; overflow-x: hidden; }
     .site-nav a { font-size: 11px; padding: 5px 8px; }
     .page-title { font-size: 22px; }
-    .site-header { padding: 10px 14px; }
+    .container { overflow-x: hidden; }
     .summary-table td:first-child { width: auto; }
     .about-page .about-top__photo { max-width: 200px; }
   }
