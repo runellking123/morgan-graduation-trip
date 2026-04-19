@@ -5,7 +5,7 @@
   var NAME_KEY = 'morganTripUser';
   var SUPABASE_URL = 'https://gvacgvtokbjnqmaiynpr.supabase.co';
   var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2YWNndnRva2JqbnFtYWl5bnByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxMjA3NzIsImV4cCI6MjA5MTY5Njc3Mn0.BTuscHq7T1lJbSKv-UNk5tfhbJTvscr_NgZSggvVH54';
-  var FAMILY_NAMES = ['Morgan', 'Runell', 'Marvin', 'Lilly', 'Kai', 'Keosha', 'Brittany', 'Kayla', 'Nathan', 'Jovan'];
+  var FAMILY_NAMES = ['Morgan', 'Runell', 'Marvin', 'Lillie', 'Kai', 'Keosha', 'Brittany', 'Kayla', 'Nathan', 'Jovan'];
   var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
   var allFavorites = [];
   var currentUser = localStorage.getItem(NAME_KEY) || '';
