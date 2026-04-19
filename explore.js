@@ -654,46 +654,39 @@
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
-  /* Decorative photos only — swap for real venue photos anytime via place.image */
-  var SECTION_GALLERY_IMAGES = {
-    eat: [
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=720&h=480&fit=crop&q=80',
-    ],
-    water: [
-      'https://images.unsplash.com/photo-1544551763-393ef8881899?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1506905925346-21bfe4d38e2f?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1439066615861-d1af74d74900?w=720&h=480&fit=crop&q=80',
-    ],
-    play: [
-      'https://images.unsplash.com/photo-1577081329086-081f9c924e8f?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1566125882502-1b3e03475c79?w=720&h=480&fit=crop&q=80',
-    ],
-    outdoors: [
-      'https://images.unsplash.com/photo-1507525428030-b723cf961d3e?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1441974231531-c6227db76b7e?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1469474968028-56623fec02aa?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1470071459603-411ffdc67908?w=720&h=480&fit=crop&q=80',
-    ],
-    shop: [
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1567443024551-f3e3cc21e63f?w=720&h=480&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=720&h=480&fit=crop&q=80',
-    ],
-  };
+  /* Stock photos via Picsum (reliable hotlinking). Override any card with place.image for real venue shots. */
+  var GALLERY_FALLBACK_PIC_IDS = { eat: 429, water: 1050, play: 206, outdoors: 575, shop: 366 };
+
+  function gallerySeedSegment(place) {
+    return ('morgan-' + place.sectionKey + '-' + place.id).replace(/[^a-zA-Z0-9-]/g, '-');
+  }
 
   function galleryImageUrl(place) {
     if (place.image) return place.image;
-    var list = SECTION_GALLERY_IMAGES[place.sectionKey];
-    if (!list || !list.length) list = SECTION_GALLERY_IMAGES.eat;
-    var h = 0;
-    for (var i = 0; i < place.id.length; i++) {
-      h += place.id.charCodeAt(i);
-    }
-    return list[h % list.length];
+    return (
+      'https://picsum.photos/seed/' + encodeURIComponent(gallerySeedSegment(place)) + '/720/480'
+    );
+  }
+
+  function attachGalleryImgFallback(img, place) {
+    if (!img) return;
+    img.addEventListener(
+      'error',
+      function onErr() {
+        img.removeEventListener('error', onErr);
+        var fid = GALLERY_FALLBACK_PIC_IDS[place.sectionKey] || 292;
+        img.src = 'https://picsum.photos/id/' + fid + '/720/480';
+        img.addEventListener(
+          'error',
+          function onErr2() {
+            img.removeEventListener('error', onErr2);
+            img.src = 'https://picsum.photos/720/480';
+          },
+          { once: true }
+        );
+      },
+      { once: true }
+    );
   }
 
   function createPlaceWrap(place) {
@@ -724,7 +717,7 @@
       escapeAttr(galleryImageUrl(place)) +
       '" alt="' +
       escapeAttr(place.name) +
-      '" loading="lazy" decoding="async" width="720" height="480" />' +
+      '" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="720" height="480" />' +
       '<span class="place-card__badge ' +
       badgeClass +
       '">' +
@@ -766,6 +759,8 @@
     [].forEach.call(card.querySelectorAll('.place-card__action'), function (btn) {
       if (st[btn.dataset.action]) btn.classList.add('is-on');
     });
+
+    attachGalleryImgFallback(card.querySelector('.place-card__img'), place);
 
     wrap.appendChild(card);
     return wrap;
