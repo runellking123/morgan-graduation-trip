@@ -1,5 +1,37 @@
 /* Eat & Explore — gallery-style visitor guide */
 
+/* --- People chips on cards --- */
+.place-card__people {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 0 2px;
+  margin-top: 4px;
+  border-top: 1px solid var(--gray-100);
+}
+.place-card__person {
+  display: inline-block;
+  background: var(--gold-pale);
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(197,160,48,0.25);
+  letter-spacing: 0.2px;
+}
+
+/* --- Name picker --- */
+#name-picker-backdrop {
+  display: none;
+}
+#name-picker-backdrop.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .explore-page--gallery .page-title {
   font-size: clamp(1.5rem, 4vw, 2rem);
 }

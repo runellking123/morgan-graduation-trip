@@ -2,6 +2,13 @@
   'use strict';
 
   var STORAGE_KEY = 'morganTripPlaces';
+  var NAME_KEY = 'morganTripUser';
+  var SUPABASE_URL = 'https://gvacgvtokbjnqmaiynpr.supabase.co';
+  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2YWNndnRva2JqbnFtYWl5bnByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxMjA3NzIsImV4cCI6MjA5MTY5Njc3Mn0.BTuscHq7T1lJbSKv-UNk5tfhbJTvscr_NgZSggvVH54';
+  var FAMILY_NAMES = ['Morgan', 'Runell', 'Marvin', 'Lilly', 'Kai', 'Keosha', 'Brittany', 'Kayla', 'Nathan', 'Jovan'];
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+  var allFavorites = [];
+  var currentUser = localStorage.getItem(NAME_KEY) || '';
 
   var CHIPS = [
     'All',
@@ -1059,43 +1066,118 @@
     return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address);
   }
 
-  function loadStates() {
-    try {
-      var raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return {};
-      var parsed = JSON.parse(raw);
-      return parsed && typeof parsed === 'object' ? parsed : {};
-    } catch (e) {
-      return {};
-    }
-  }
+  /* --- Supabase-backed state --- */
 
-  function saveStates(states) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
-    } catch (e) {}
+  function loadFavoritesFromSupabase(cb) {
+    if (!sb) { cb && cb(); return; }
+    sb.from('trip_favorites').select('*').then(function (res) {
+      allFavorites = (res.data || []);
+      cb && cb();
+    });
   }
 
   function getState(id) {
-    var all = loadStates();
-    return all[id] || { favorite: false, wantToGo: false, visited: false };
+    if (!currentUser) return { favorite: false, wantToGo: false, visited: false };
+    var fav = false, want = false, vis = false;
+    allFavorites.forEach(function (r) {
+      if (r.place_id === id && r.person_name === currentUser) {
+        if (r.action === 'favorite') fav = true;
+        if (r.action === 'wantToGo') want = true;
+        if (r.action === 'visited') vis = true;
+      }
+    });
+    return { favorite: fav, wantToGo: want, visited: vis };
   }
 
   function setState(id, partial) {
-    var all = loadStates();
-    var cur = all[id] || { favorite: false, wantToGo: false, visited: false };
-    all[id] = {
-      favorite: partial.favorite !== undefined ? partial.favorite : cur.favorite,
-      wantToGo: partial.wantToGo !== undefined ? partial.wantToGo : cur.wantToGo,
-      visited: partial.visited !== undefined ? partial.visited : cur.visited,
-    };
-    saveStates(all);
+    if (!currentUser || !sb) return;
+    var action = Object.keys(partial)[0];
+    var isOn = partial[action];
+    if (isOn) {
+      var row = { person_name: currentUser, place_id: id, action: action };
+      allFavorites.push(row);
+      sb.from('trip_favorites').upsert(row, { onConflict: 'person_name,place_id,action' }).then(function () {});
+    } else {
+      allFavorites = allFavorites.filter(function (r) {
+        return !(r.person_name === currentUser && r.place_id === id && r.action === action);
+      });
+      sb.from('trip_favorites').delete()
+        .eq('person_name', currentUser)
+        .eq('place_id', id)
+        .eq('action', action)
+        .then(function () {});
+    }
   }
 
   function countBy(key) {
+    if (!currentUser) return 0;
     return places.filter(function (p) {
       return getState(p.id)[key];
     }).length;
+  }
+
+  function getPeopleForPlace(id, action) {
+    var names = [];
+    allFavorites.forEach(function (r) {
+      if (r.place_id === id && r.action === action && names.indexOf(r.person_name) === -1) {
+        names.push(r.person_name);
+      }
+    });
+    return names;
+  }
+
+  function ensureUser(cb) {
+    if (currentUser) { cb(); return; }
+    showNamePicker(cb);
+  }
+
+  function showNamePicker(cb) {
+    var backdrop = document.getElementById('name-picker-backdrop');
+    var btnsWrap = document.getElementById('name-picker-buttons');
+    var customInput = document.getElementById('name-picker-custom');
+    var goBtn = document.getElementById('name-picker-go');
+    backdrop.setAttribute('aria-hidden', 'false');
+    backdrop.classList.add('is-open');
+
+    btnsWrap.innerHTML = '';
+    FAMILY_NAMES.forEach(function (name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = name;
+      btn.style.cssText = 'padding:8px 16px;background:var(--gold-pale);border:2px solid var(--gold);border-radius:8px;font-size:14px;font-weight:600;color:var(--navy);cursor:pointer;transition:background 0.2s;';
+      btn.addEventListener('click', function () {
+        pickName(name);
+      });
+      btnsWrap.appendChild(btn);
+    });
+
+    function pickName(name) {
+      currentUser = name.trim();
+      if (!currentUser) return;
+      localStorage.setItem(NAME_KEY, currentUser);
+      backdrop.classList.remove('is-open');
+      backdrop.setAttribute('aria-hidden', 'true');
+      updateUserBadge();
+      cb && cb();
+    }
+
+    goBtn.onclick = function () {
+      var val = customInput.value.trim();
+      if (val) pickName(val);
+    };
+    customInput.onkeydown = function (e) {
+      if (e.key === 'Enter') {
+        var val = customInput.value.trim();
+        if (val) pickName(val);
+      }
+    };
+  }
+
+  function updateUserBadge() {
+    var badge = document.getElementById('current-user-badge');
+    if (badge) {
+      badge.textContent = currentUser || 'Pick name';
+    }
   }
 
   var iconHeart = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
@@ -1118,6 +1200,17 @@
       }
     }
     return '<span class="place-card__stars" aria-label="' + rating + ' out of 5">' + out + '</span>';
+  }
+
+  function peopleChipsHtml(placeId) {
+    var names = getPeopleForPlace(placeId, 'favorite');
+    if (!names.length) return '';
+    var chips = names.map(function (n) {
+      return '<span class="place-card__person">' + escapeHtml(n) + '</span>';
+    }).join('');
+    return '<div class="place-card__people">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color:var(--gold);flex-shrink:0;margin-top:1px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+      chips + '</div>';
   }
 
   var selectedCategory = 'All';
@@ -1435,7 +1528,9 @@
       '" aria-label="Visited">' +
       (st.visited ? iconCheckFilled : iconCheck) +
       '</button>' +
-      '</div></div>';
+      '</div>' +
+      peopleChipsHtml(place.id) +
+      '</div>';
 
     [].forEach.call(card.querySelectorAll('.place-card__action'), function (btn) {
       if (st[btn.dataset.action]) btn.classList.add('is-on');
@@ -1727,12 +1822,14 @@
         if (!wrap) return;
         var id = wrap.dataset.placeId;
         var action = actBtn.dataset.action;
-        var st = getState(id);
-        var next = !st[action];
-        var patch = {};
-        patch[action] = next;
-        setState(id, patch);
-        softRefresh();
+        ensureUser(function () {
+          var st = getState(id);
+          var next = !st[action];
+          var patch = {};
+          patch[action] = next;
+          setState(id, patch);
+          softRefresh();
+        });
         return;
       }
 
@@ -1793,7 +1890,29 @@
 
     bind();
     window.addEventListener('hashchange', applyExploreHash);
-    fullRefresh();
+
+    /* Add user badge to stats area */
+    var statsArea = document.querySelector('.explore-stats');
+    if (statsArea) {
+      var userBtn = document.createElement('button');
+      userBtn.type = 'button';
+      userBtn.className = 'explore-stat';
+      userBtn.id = 'current-user-btn';
+      userBtn.innerHTML =
+        '<div class="explore-stat__icon" aria-hidden="true">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+        '</div>' +
+        '<div class="explore-stat__label">You are</div>' +
+        '<div class="explore-stat__count" id="current-user-badge" style="font-size:13px;font-weight:700;">' + (currentUser || 'Pick name') + '</div>';
+      userBtn.addEventListener('click', function () {
+        showNamePicker(function () { softRefresh(); });
+      });
+      statsArea.appendChild(userBtn);
+    }
+
+    loadFavoritesFromSupabase(function () {
+      fullRefresh();
+    });
   }
 
   if (document.readyState === 'loading') {
