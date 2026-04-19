@@ -877,21 +877,22 @@ details.explore-cat[open] > summary .explore-cat__summary-inner::after {
 
 .explore-modal__close {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--gold);
   border-radius: 10px;
-  background: var(--gray-100);
+  background: var(--navy);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--navy);
-  transition: background 0.2s;
+  color: var(--gold);
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .explore-modal__close:hover {
-  background: var(--gray-200);
+  background: var(--navy-light);
+  border-color: var(--gold-bright);
 }
 
 .explore-modal__close:focus-visible {
