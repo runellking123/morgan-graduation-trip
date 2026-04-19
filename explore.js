@@ -42,6 +42,7 @@
   var places = [
     {
       id: 'shooters-waterfront',
+      image: 'images/explore/shooters-waterfront.jpg',
       sectionKey: 'eat',
       name: 'Shooters Waterfront',
       kind: 'dining',
@@ -57,6 +58,7 @@
     },
     {
       id: 'roccos-tacos',
+      image: 'images/explore/roccos-tacos.png',
       sectionKey: 'eat',
       name: "Rocco's Tacos & Tequila Bar",
       kind: 'dining',
@@ -72,6 +74,7 @@
     },
     {
       id: 'lesters-diner',
+      image: 'images/explore/lesters-diner.jpg',
       sectionKey: 'eat',
       name: "Lester's Diner",
       kind: 'dining',
@@ -87,6 +90,7 @@
     },
     {
       id: 'coconuts-by-the-water',
+      image: 'images/explore/coconuts-by-the-water.jpg',
       sectionKey: 'eat',
       name: 'Coconuts by the Water',
       kind: 'dining',
@@ -102,6 +106,7 @@
     },
     {
       id: 'pirate-republic',
+      image: 'images/explore/pirate-republic.jpg',
       sectionKey: 'eat',
       name: 'The Pirate Republic Seafood & Bar',
       kind: 'dining',
@@ -117,6 +122,7 @@
     },
     {
       id: 'big-city-tavern',
+      image: 'images/explore/big-city-tavern.jpg',
       sectionKey: 'eat',
       name: 'Big City Tavern',
       kind: 'dining',
@@ -132,6 +138,7 @@
     },
     {
       id: 'jungle-queen',
+      image: 'images/explore/jungle-queen.png',
       sectionKey: 'water',
       name: 'Jungle Queen Riverboat',
       kind: 'activity',
@@ -147,6 +154,7 @@
     },
     {
       id: 'xtreme-action-park',
+      image: 'images/explore/xtreme-action-park.jpg',
       sectionKey: 'play',
       name: 'Xtreme Action Park',
       kind: 'activity',
@@ -162,6 +170,7 @@
     },
     {
       id: 'ftl-beach',
+      image: 'images/explore/ftl-beach.jpg',
       sectionKey: 'outdoors',
       name: 'Fort Lauderdale Beach',
       kind: 'activity',
@@ -177,6 +186,7 @@
     },
     {
       id: 'riverwalk-water-taxi',
+      image: 'images/explore/riverwalk-water-taxi.jpg',
       sectionKey: 'water',
       name: 'Riverwalk Fort Lauderdale & Water Taxi',
       kind: 'activity',
@@ -192,6 +202,7 @@
     },
     {
       id: 'mods',
+      image: 'images/explore/mods.jpg',
       sectionKey: 'play',
       name: 'Museum of Discovery & Science (MODS)',
       kind: 'activity',
@@ -207,6 +218,7 @@
     },
     {
       id: 'butterfly-world',
+      image: 'images/explore/butterfly-world.jpg',
       sectionKey: 'outdoors',
       name: 'Butterfly World',
       kind: 'activity',
@@ -222,6 +234,7 @@
     },
     {
       id: 'hugh-taylor-birch',
+      image: 'images/explore/hugh-taylor-birch.jpg',
       sectionKey: 'outdoors',
       name: 'Hugh Taylor Birch State Park',
       kind: 'activity',
@@ -237,6 +250,7 @@
     },
     {
       id: 'louie-bossi',
+      image: 'images/explore/louie-bossi.jpg',
       sectionKey: 'eat',
       name: "Louie Bossi's Ristorante Bar Pizzeria",
       kind: 'dining',
@@ -252,13 +266,14 @@
     },
     {
       id: 'boatyard',
+      image: 'images/explore/boatyard.jpg',
       sectionKey: 'eat',
       name: 'Boatyard',
       kind: 'dining',
       categories: ['Dining', 'Waterfront', 'Brunch'],
       address: '1555 SE 17th St, Fort Lauderdale, FL 33316',
       phone: '(954) 525-7400',
-      website: 'https://www.boatyardfl.com',
+      website: 'https://boatyard.restaurant/',
       price: '$$$',
       rating: 4.5,
       description: 'Upscale waterfront seafood and steaks; marina views and a celebratory vibe.',
@@ -267,6 +282,7 @@
     },
     {
       id: 'kaluz-restaurant',
+      image: 'images/explore/kaluz-restaurant.jpg',
       sectionKey: 'eat',
       name: 'Kaluz Restaurant',
       kind: 'dining',
@@ -282,6 +298,7 @@
     },
     {
       id: 'blue-moon-fish',
+      image: 'images/explore/blue-moon-fish.jpg',
       sectionKey: 'eat',
       name: 'Blue Moon Fish Co.',
       kind: 'dining',
@@ -297,6 +314,7 @@
     },
     {
       id: 'foxy-brown',
+      image: 'images/explore/foxy-brown.jpg',
       sectionKey: 'eat',
       name: 'Foxy Brown',
       kind: 'dining',
@@ -312,6 +330,7 @@
     },
     {
       id: 'henrys-sandwich',
+      image: 'images/explore/henrys-sandwich.jpg',
       sectionKey: 'eat',
       name: "Henry's Sandwich Station",
       kind: 'dining',
@@ -327,6 +346,7 @@
     },
     {
       id: 'stork-patisserie',
+      image: 'images/explore/stork-patisserie.jpg',
       sectionKey: 'eat',
       name: "Stork's Bakery & Coffee House",
       kind: 'dining',
@@ -342,6 +362,7 @@
     },
     {
       id: 'carrie-b-cruises',
+      image: 'images/explore/carrie-b-cruises.jpg',
       sectionKey: 'water',
       name: 'Carrie B Cruises',
       kind: 'activity',
@@ -357,6 +378,7 @@
     },
     {
       id: 'stranahan-house',
+      image: 'images/explore/stranahan-house.jpg',
       sectionKey: 'water',
       name: 'Historic Stranahan House Museum',
       kind: 'activity',
@@ -372,6 +394,7 @@
     },
     {
       id: 'nsu-art-museum',
+      image: 'images/explore/nsu-art-museum.jpg',
       sectionKey: 'play',
       name: 'NSU Art Museum Fort Lauderdale',
       kind: 'activity',
@@ -387,6 +410,7 @@
     },
     {
       id: 'young-at-art',
+      image: 'images/explore/young-at-art.png',
       sectionKey: 'play',
       name: 'Young At Art Museum',
       kind: 'activity',
@@ -402,6 +426,7 @@
     },
     {
       id: 'flamingo-gardens',
+      image: 'images/explore/flamingo-gardens.jpg',
       sectionKey: 'outdoors',
       name: 'Flamingo Gardens',
       kind: 'activity',
@@ -417,6 +442,7 @@
     },
     {
       id: 'anne-kolb-nature',
+      image: 'images/explore/anne-kolb-nature.jpg',
       sectionKey: 'outdoors',
       name: 'Anne Kolb Nature Center',
       kind: 'activity',
@@ -432,6 +458,7 @@
     },
     {
       id: 'john-u-lloyd-beach',
+      image: 'images/explore/john-u-lloyd-beach.jpg',
       sectionKey: 'outdoors',
       name: 'Dr. Von D. Mizell-Eula Johnson State Park',
       kind: 'activity',
@@ -447,6 +474,7 @@
     },
     {
       id: 'secret-woods',
+      image: 'images/explore/secret-woods.jpg',
       sectionKey: 'outdoors',
       name: 'Secret Woods Nature Center',
       kind: 'activity',
@@ -462,6 +490,7 @@
     },
     {
       id: 'las-olas-district',
+      image: 'images/explore/las-olas-district.jpg',
       sectionKey: 'shop',
       name: 'Las Olas Boulevard',
       kind: 'shopping',
@@ -477,6 +506,7 @@
     },
     {
       id: 'the-galleria',
+      image: 'images/explore/the-galleria.jpg',
       sectionKey: 'shop',
       name: 'The Galleria at Fort Lauderdale',
       kind: 'shopping',
@@ -492,6 +522,7 @@
     },
     {
       id: 'sawgrass-mills',
+      image: 'images/explore/sawgrass-mills.jpg',
       sectionKey: 'shop',
       name: 'Sawgrass Mills',
       kind: 'shopping',
@@ -654,7 +685,7 @@
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
-  /* Stock photos via Picsum (reliable hotlinking). Override any card with place.image for real venue shots. */
+  /* Cards use bundled images under images/explore/<id>; Picsum remains a fallback if an image fails to load. */
   var GALLERY_FALLBACK_PIC_IDS = { eat: 429, water: 1050, play: 206, outdoors: 575, shop: 366 };
 
   function gallerySeedSegment(place) {
