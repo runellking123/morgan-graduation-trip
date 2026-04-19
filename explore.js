@@ -223,6 +223,19 @@
       description: 'Iconic sightseeing cruise on the New River and Intracoastal — alligator and bird show.',
       tags: ['Sightseeing Cruise', 'All Ages'],
       hours: 'Cruise schedules vary — book on junglequeen.com.',
+      feeSchedule: [
+        {
+          label: '90-minute narrated sightseeing — adult (typical advance online)',
+          value: 'from ~$31',
+        },
+        { label: 'Youth pricing', value: 'See checkout at junglequeen.com' },
+        {
+          label: 'Evening Bahia Mar parking (night cruises — pay onboard)',
+          value: '$20 / vehicle validated',
+        },
+      ],
+      feeSourceNote:
+        'junglequeen.com · Per-person fares vary by date/show; infants under 2 must be counted in the reservation.',
     },
     {
       id: 'xtreme-action-park',
@@ -239,6 +252,20 @@
       description: 'Indoor go-karts, trampolines, bowling, arcade — air-conditioned family fun.',
       tags: ['Indoor Fun', 'All Ages'],
       hours: 'Mon–Thu 2–10 PM, Fri–Sun 10 AM–12 AM.',
+      feeSchedule: [
+        { label: 'Park entry', value: 'Free (pay per attraction)' },
+        { label: 'Trampoline — 1 hour', value: '$20 / person (tax incl.)' },
+        { label: 'Trampoline grip socks', value: '$4 (required)' },
+        { label: 'Go-karts — Pro race (1 session)', value: '$29' },
+        { label: 'Go-karts — Xtreme Race License + head sock', value: '$10 (new riders)' },
+        { label: 'Go-karts — Junior session (ages 5–9)', value: '$17' },
+        { label: 'Laser tag — 1 session', value: '$15' },
+        { label: 'Mini golf', value: '$17' },
+        { label: 'Bowling — per game', value: '$11' },
+        { label: 'New arcade/game card', value: '$5 card fee (new customers)' },
+      ],
+      feeSourceNote:
+        'xtremeactionpark.com/prices · Feb 2026 sheet; age/height/weight limits apply; prices include sales tax.',
     },
     {
       id: 'ftl-beach',
@@ -255,6 +282,14 @@
       description: 'Wide beaches, gentle waves, lifeguards — classic Florida with the promenade nearby.',
       tags: ['Free', 'Classic Florida'],
       hours: 'Public beach — daylight hours typical; lifeguard hours vary by season.',
+      feeSchedule: [
+        { label: 'Beach & Intracoastal access', value: 'Free' },
+        {
+          label: 'Parking along A1A / garages',
+          value: 'Paid meters & lots — rates vary',
+        },
+      ],
+      feeSourceNote: 'No admission to the beach itself; parking is posted on-site.',
     },
     {
       id: 'riverwalk-water-taxi',
@@ -271,6 +306,25 @@
       description: 'Riverwalk park is free; Water Taxi hop-on pass for a scenic ride along the route.',
       tags: ['Free / Low Cost', 'Scenic'],
       hours: 'Riverwalk: typically dawn to dusk. Water Taxi: see watertaxi.com for schedule.',
+      feeSchedule: [
+        {
+          label: 'Riverwalk parks & Water Trolley (downtown stops)',
+          value: 'Free',
+        },
+        { label: 'Water Taxi — All Day Pass adult (10 AM–10 PM)', value: '$38' },
+        { label: 'Water Taxi — ages 5–11', value: '$18' },
+        { label: 'Water Taxi — ages 0–4', value: 'Free' },
+        {
+          label: 'Water Taxi — Evening Pass adult (after 5 PM)',
+          value: '$25',
+        },
+        {
+          label: 'Water Taxi — Multi-Day Pass (30 consecutive days)',
+          value: '$140',
+        },
+      ],
+      feeSourceNote:
+        'watertaxi.com FAQ · Route includes Hollywood; Pompano-only pricing differs; riders under 5 ride free.',
     },
     {
       id: 'mods',
@@ -287,6 +341,29 @@
       description: 'Interactive science, live animals, IMAX — ideal for a hot June afternoon.',
       tags: ['Educational', 'Indoor'],
       hours: 'Mon–Sat 10 AM–5 PM, Sun 12–5 PM.',
+      feeSchedule: [
+        {
+          label: 'Discovery Pass — Adult (exhibits + one IMAX)',
+          value: '$28',
+        },
+        {
+          label: 'Discovery Pass — Child ages 1–12',
+          value: '$23',
+        },
+        { label: 'Discovery Pass — Senior 65+', value: '$26' },
+        { label: 'Discovery Pass — Military', value: '$25' },
+        { label: 'Infants ages 0–12 months', value: 'Free' },
+        {
+          label: 'South FL residents — Adult (Tri-County ID)',
+          value: '$25 same bundle',
+        },
+        {
+          label: 'Museums for All (SNAP/EBT/WIC + photo ID)',
+          value: '$4 / person (≤4)',
+        },
+      ],
+      feeSourceNote:
+        'mods.org/tickets · Non-member Discovery Pass; PLUS/IMAX bundles cost more — see website.',
     },
     {
       id: 'butterfly-world',
@@ -303,6 +380,20 @@
       description: 'World-class butterfly aviaries, hummingbirds, and tropical gardens — ~25 min from FTL.',
       tags: ['Nature', 'Unique Experience'],
       hours: 'Mon–Sat 9 AM–5 PM, Sun 11 AM–5 PM.',
+      feeSchedule: [
+        {
+          label: 'General admission — ages 12+',
+          value: '$32.50',
+        },
+        { label: 'Children ages 3–11', value: '$22.50' },
+        { label: 'Ages 2 & under', value: 'Free' },
+        {
+          label: 'Tradewinds Park vehicle fee (weekends & holidays)',
+          value: '$3 (≤8 people)',
+        },
+      ],
+      feeSourceNote:
+        'butterflyworld.com · Inside Tradewinds Park; weekday parking often free — confirm gate signage.',
     },
     {
       id: 'hugh-taylor-birch',
@@ -319,6 +410,22 @@
       description: 'Trails, lagoon, beach access — $6 per vehicle; turtles, iguanas, and birds.',
       tags: ['Nature', 'Affordable'],
       hours: '8 AM–sunset daily.',
+      feeSchedule: [
+        {
+          label: 'Vehicle entry (≤8 people)',
+          value: '$6',
+        },
+        {
+          label: 'Single-occupant vehicle / motorcycle',
+          value: '$4',
+        },
+        {
+          label: 'Pedestrians, cyclists, extra passengers',
+          value: '$2',
+        },
+      ],
+      feeSourceNote:
+        'floridastateparks.org · Fee applies per vehicle/walk-in; Florida State Parks annual passes accepted.',
     },
     {
       id: 'louie-bossi',
@@ -531,6 +638,19 @@
       description: 'Sightseeing cruises on the Intracoastal — alternative vibe to the Jungle Queen.',
       tags: ['Cruise', 'Sightseeing'],
       hours: 'Seasonal schedule — book ahead on carrieb.com.',
+      feeSchedule: [
+        {
+          label: 'Narrated sightseeing cruise — adult (typical online)',
+          value: 'from ~$30',
+        },
+        {
+          label: 'Child 3–12 (reseller sites; confirm official)',
+          value: 'from ~$20',
+        },
+        { label: 'Ages 0–2', value: 'See carrieb.com' },
+      ],
+      feeSourceNote:
+        'carrieb.com — 90-minute “Venice of America” tours; buy direct for current bar & snack pricing.',
     },
     {
       id: 'stranahan-house',
@@ -547,6 +667,23 @@
       description: "Fort Lauderdale's oldest home — guided tours on the New River; quick culture stop.",
       tags: ['History', 'Tour'],
       hours: 'Tours Wed–Sun — buy tickets online.',
+      feeSchedule: [
+        {
+          label: 'Guided docent tour — Adult (under 60)',
+          value: '$12',
+        },
+        {
+          label: 'Guided docent tour — Senior ages 60+',
+          value: '$11',
+        },
+        {
+          label: 'Student with ID',
+          value: '$7',
+        },
+        { label: 'Ages 0–5', value: 'Free' },
+      ],
+      feeSourceNote:
+        'stranahanhouse.org/visit · Admission by guided tour only; purchase online or at door subject to availability.',
     },
     {
       id: 'nsu-art-museum',
@@ -563,6 +700,23 @@
       description: 'Contemporary art in the heart of Las Olas — 1–2 hours, air-conditioned.',
       tags: ['Art', 'Downtown'],
       hours: 'Tue–Sun; closed Mon — see site.',
+      feeSchedule: [
+        { label: 'General admission — Adults', value: '$16' },
+        { label: 'Seniors', value: '$10' },
+        { label: 'U.S. military', value: '$8' },
+        { label: 'College students (valid ID)', value: '$5' },
+        { label: 'Ages 13–17', value: 'Free' },
+        {
+          label: 'Ages 12 & under; NSU/BC students & listed members',
+          value: 'Free',
+        },
+        {
+          label: 'U.S. veterans & dependents (same household)',
+          value: 'Free',
+        },
+      ],
+      feeSourceNote:
+        'nsuartmuseum.org/visit · First Thursday monthly free 11a–7p; special ticketed shows may cost extra.',
     },
     {
       id: 'young-at-art',
@@ -579,6 +733,15 @@
       description: "Hands-on children's art museum — ideal for younger kids on a hot afternoon.",
       tags: ['Kids', 'Creative'],
       hours: 'Thu–Sun typical — confirm before you go.',
+      feeSchedule: [
+        {
+          label: 'Museum admission — ages 2+ (children & adults)',
+          value: '$12 each',
+        },
+        { label: 'Under 2 years', value: 'Free' },
+      ],
+      feeSourceNote:
+        'youngatartmuseum.org/visit · Located inside Broward Mall; members free.',
     },
     {
       id: 'flamingo-gardens',
@@ -595,6 +758,23 @@
       description: 'Botanical gardens, wildlife sanctuary, and flamingos — ~30 min west of downtown.',
       tags: ['Wildlife', 'Garden'],
       hours: 'Daily 9:30 AM–5 PM — last admission 4 PM.',
+      feeSchedule: [
+        {
+          label: 'General admission — Adults ages 12+',
+          value: '$24',
+        },
+        {
+          label: 'Children ages 3–11',
+          value: '$17',
+        },
+        { label: 'Ages 2 & under; members', value: 'Free' },
+        {
+          label: 'Wheelchair / stroller rental',
+          value: '$7–$30 + deposit',
+        },
+      ],
+      feeSourceNote:
+        'flamingogardens.org/visit · Parking free; tram & aviary close before 5 PM.',
     },
     {
       id: 'anne-kolb-nature',
@@ -611,6 +791,18 @@
       description: 'Elevated mangrove boardwalks and exhibits — calm nature break near Hollywood Beach.',
       tags: ['Boardwalk', 'Birding'],
       hours: 'Wed–Sun typical hours — check Broward site.',
+      feeSchedule: [
+        {
+          label: 'Nature center exhibits & boardwalks',
+          value: 'Free',
+        },
+        {
+          label: 'County park vehicle fee (weekends/holidays)',
+          value: '$3 (≤8 occupants)',
+        },
+      ],
+      feeSourceNote:
+        'broward.org/Parks · Weekday gate fees often waived — read entrance signage.',
     },
     {
       id: 'john-u-lloyd-beach',
@@ -627,6 +819,26 @@
       description: 'Quiet beach, reef snorkeling, and picnic pavilions — different vibe than busy A1A.',
       tags: ['Beach', 'Snorkel'],
       hours: '8 AM until sunset.',
+      feeSchedule: [
+        {
+          label: 'Vehicle entry (≤8 people)',
+          value: '$6',
+        },
+        {
+          label: 'Single-occupant vehicle / motorcycle',
+          value: '$4',
+        },
+        {
+          label: 'Pedestrians / cyclists / extra passengers',
+          value: '$2',
+        },
+        {
+          label: 'Boat ramp launch',
+          value: '$9 + tax',
+        },
+      ],
+      feeSourceNote:
+        'floridastateparks.org · Former John U. Lloyd Beach; snorkeling from shore — gear not included.',
     },
     {
       id: 'secret-woods',
@@ -643,6 +855,18 @@
       description: 'Short trails and a small exhibit hall — easy nature stop without a long drive.',
       tags: ['Trails', 'Easy'],
       hours: 'Wed–Sun — verify on Broward site.',
+      feeSchedule: [
+        {
+          label: 'Nature center exhibits & trails',
+          value: 'Free',
+        },
+        {
+          label: 'County park vehicle fee (if gate charged)',
+          value: 'See broward.org/Parks/Fees',
+        },
+      ],
+      feeSourceNote:
+        'Small urban nature stop; weekends may require the standard Broward regional-park vehicle fee.',
     },
     {
       id: 'las-olas-district',
@@ -659,6 +883,14 @@
       description: 'Flagship stroll — boutiques, galleries, and people-watching between meals.',
       tags: ['Walkable', 'Boutiques'],
       hours: 'Store hours vary; public sidewalk anytime.',
+      feeSchedule: [
+        { label: 'Strolling the boulevard', value: 'Free' },
+        {
+          label: 'Street parking / garages',
+          value: 'Paid — varies by block',
+        },
+      ],
+      feeSourceNote: 'No district admission; shop & dining prices vary by merchant.',
     },
     {
       id: 'the-galleria',
@@ -675,6 +907,15 @@
       description: 'Full-service mall — department stores, AC, and food court for a rainy afternoon.',
       tags: ['Mall', 'AC'],
       hours: 'Mon–Sat 10 AM–9 PM, Sun 12–6 PM — confirm holidays.',
+      feeSchedule: [
+        { label: 'Mall entry', value: 'Free' },
+        {
+          label: 'Parking (garage & surface)',
+          value: 'Paid premium options + free lots — see site',
+        },
+      ],
+      feeSourceNote:
+        'galleriamallfl.com · Valet or reserved parking may charge separate rates.',
     },
     {
       id: 'sawgrass-mills',
@@ -691,6 +932,15 @@
       description: 'Huge outlet mall — worth the ~25 min drive if shoppers want deals.',
       tags: ['Outlets', 'All Day'],
       hours: 'Typically 10 AM–9 PM — check Simon site.',
+      feeSchedule: [
+        { label: 'Mall & outlet entry', value: 'Free' },
+        {
+          label: 'Parking',
+          value: 'Large free lots; premium spots may charge',
+        },
+      ],
+      feeSourceNote:
+        'simon.com/mall/sawgrass-mills · Electric vehicle or valet stalls may bill hourly.',
     },
   ];
 
@@ -919,6 +1169,39 @@
   }
 
   /** Dining only: popular picks with prices (modal). Max 10 items in data. */
+  function feeScheduleSectionHtml(place) {
+    if (!place.feeSchedule || !place.feeSchedule.length) return '';
+    var fid = 'explore-modal-fees-' + place.id.replace(/[^a-zA-Z0-9_-]/g, '-');
+    var note = place.feeSourceNote
+      ? '<p class="explore-modal__fee-note">' + escapeHtml(place.feeSourceNote) + '</p>'
+      : '';
+    var lis = '';
+    for (var i = 0; i < place.feeSchedule.length; i++) {
+      var row = place.feeSchedule[i];
+      lis +=
+        '<li class="explore-modal__fee-item">' +
+        '<span class="explore-modal__fee-label">' +
+        escapeHtml(row.label) +
+        '</span>' +
+        '<span class="explore-modal__fee-value">' +
+        escapeHtml(row.value) +
+        '</span>' +
+        '</li>';
+    }
+    return (
+      '<section class="explore-modal__fee-block" aria-labelledby="' +
+      escapeAttr(fid) +
+      '">' +
+      '<h3 id="' +
+      escapeAttr(fid) +
+      '" class="explore-modal__fee-title">Fees &amp; tickets</h3>' +
+      note +
+      '<ul class="explore-modal__fee-list">' +
+      lis +
+      '</ul></section>'
+    );
+  }
+
   function popularMenuSectionHtml(place) {
     if (place.kind !== 'dining' || !place.menuHighlights || !place.menuHighlights.length) return '';
     var items = place.menuHighlights.slice(0, 10);
@@ -1247,6 +1530,7 @@
     rows +=
       '<dt>Price</dt><dd class="explore-modal__dd explore-modal__price">' + priceModalInnerHtml(place) + '</dd>';
     rows += '</dl>';
+    rows += feeScheduleSectionHtml(place);
     rows += popularMenuSectionHtml(place);
 
     els.modalBody.innerHTML = rows + els.modalActionsTemplate;
