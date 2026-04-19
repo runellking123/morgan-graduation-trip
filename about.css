@@ -1,0 +1,422 @@
+/* ===== ABOUT MORGAN — CREATIVE LAYOUT ===== */
+
+/* ---------- HERO ---------- */
+.about-hero {
+  position: relative;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 40%, var(--navy-mid) 70%, #2A4A7F 100%);
+  overflow: hidden;
+  min-height: 520px;
+}
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 80%, rgba(197,160,48,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  z-index: 1;
+}
+.about-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 60px 32px;
+}
+.about-hero__photo {
+  width: 280px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 4px rgba(197,160,48,0.3);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.about-hero__text {
+  color: var(--white);
+}
+.about-hero__kicker {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.about-hero__name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.about-hero__tagline {
+  font-size: 20px;
+  color: var(--gold-light);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+.about-hero__quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  max-width: 480px;
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+}
+.about-hero__quote-mark {
+  color: var(--gold);
+  font-size: 24px;
+  font-style: normal;
+}
+
+/* ---------- BY THE NUMBERS ---------- */
+.about-numbers {
+  background: var(--navy);
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+.about-numbers__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  padding: 32px 20px;
+  gap: 16px;
+}
+.about-numbers__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.about-numbers__value {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+.about-numbers__label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+}
+
+/* ---------- SECTIONS ---------- */
+.about-section {
+  margin-bottom: 48px;
+}
+.about-section__label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.about-section__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.about-section__body p {
+  color: var(--gray-700);
+  max-width: 720px;
+  line-height: 1.75;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+/* ---------- PULL QUOTES ---------- */
+.about-pullquote {
+  margin: 48px auto;
+  max-width: 700px;
+  text-align: center;
+  padding: 0 20px;
+}
+.about-pullquote blockquote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--navy);
+  position: relative;
+  padding: 20px 0;
+}
+.about-pullquote blockquote::before,
+.about-pullquote blockquote::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.about-pullquote blockquote::before { margin-bottom: 20px; }
+.about-pullquote blockquote::after { margin-top: 20px; }
+
+/* ---------- JOURNEY TIMELINE ---------- */
+.about-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.about-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gray-300) 0%, var(--gold) 85%, var(--gold-bright) 100%);
+  border-radius: 2px;
+}
+.about-timeline__item {
+  position: relative;
+  margin-bottom: 32px;
+}
+.about-timeline__item:last-child { margin-bottom: 0; }
+
+.about-timeline__marker {
+  position: absolute;
+  left: -33px;
+  top: 22px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--gray-300);
+  z-index: 1;
+  transition: border-color 0.3s;
+}
+.about-timeline__item:hover .about-timeline__marker {
+  border-color: var(--gold);
+}
+.about-timeline__marker--gold {
+  border-color: var(--gold) !important;
+  background: var(--gold);
+  width: 20px;
+  height: 20px;
+  left: -35px;
+  top: 20px;
+  box-shadow: 0 0 0 4px rgba(197,160,48,0.2), 0 0 16px rgba(197,160,48,0.3);
+}
+
+.about-timeline__card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.about-timeline__card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.about-timeline__card--gold {
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--white) 0%, var(--gold-pale) 100%);
+}
+.about-timeline__era {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.about-timeline__card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.about-timeline__where {
+  font-size: 13px;
+  color: var(--gray-500);
+  font-weight: 600;
+  margin-bottom: 8px !important;
+}
+.about-timeline__card p {
+  color: var(--gray-700);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- INTERESTS ---------- */
+.about-interests {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.about-interests__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+.about-interests__item:hover { border-color: var(--gold); }
+.about-interests__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ---------- GRATITUDE ---------- */
+.about-gratitude {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.about-gratitude__card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.about-gratitude__card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+.about-gratitude__card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 56px;
+  color: var(--gold-pale);
+  line-height: 1;
+  pointer-events: none;
+}
+.about-gratitude__to {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.about-gratitude__role {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.about-gratitude__card p {
+  color: var(--gray-700);
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0;
+}
+.about-gratitude__card--featured {
+  grid-column: 1 / -1;
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--white) 0%, var(--gold-pale) 100%);
+}
+.about-gratitude__card--featured .about-gratitude__to {
+  font-size: 22px;
+}
+.about-gratitude__card--featured p {
+  font-size: 15px;
+  max-width: 680px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .about-hero { min-height: auto; }
+  .about-hero__content {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 24px;
+    gap: 28px;
+  }
+  .about-hero__photo { width: 220px; }
+  .about-hero__name { font-size: 38px; }
+  .about-hero__tagline { font-size: 17px; margin-bottom: 20px; }
+  .about-hero__quote {
+    border-left: none;
+    padding-left: 0;
+    border-top: 2px solid var(--gold);
+    padding-top: 16px;
+    text-align: center;
+  }
+  .about-numbers__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    padding: 28px 20px;
+  }
+  .about-numbers__value { font-size: 36px; }
+  .about-section__title { font-size: 26px; }
+  .about-pullquote blockquote { font-size: 20px; }
+  .about-interests { grid-template-columns: 1fr; }
+  .about-gratitude { grid-template-columns: 1fr; }
+  .about-gratitude__card--featured { grid-column: 1; }
+  .about-timeline { padding-left: 36px; }
+  .about-timeline::before { left: 13px; }
+  .about-timeline__marker { left: -30px; }
+  .about-timeline__marker--gold { left: -32px; }
+}
+
+@media (max-width: 480px) {
+  .about-hero__content { padding: 32px 16px; gap: 20px; }
+  .about-hero__photo { width: 180px; }
+  .about-hero__kicker { font-size: 11px; letter-spacing: 2px; }
+  .about-hero__name { font-size: 30px; }
+  .about-hero__tagline { font-size: 15px; }
+  .about-hero__quote { font-size: 15px; }
+  .about-numbers__inner { padding: 24px 16px; gap: 20px 12px; }
+  .about-numbers__value { font-size: 30px; }
+  .about-numbers__label { font-size: 11px; letter-spacing: 1px; }
+  .about-section { margin-bottom: 36px; }
+  .about-section__title { font-size: 22px; margin-bottom: 14px; }
+  .about-pullquote { margin: 36px auto; }
+  .about-pullquote blockquote { font-size: 18px; }
+  .about-timeline { padding-left: 30px; }
+  .about-timeline::before { left: 10px; }
+  .about-timeline__marker { left: -27px; width: 14px; height: 14px; }
+  .about-timeline__marker--gold { left: -29px; width: 18px; height: 18px; }
+  .about-timeline__item { margin-bottom: 24px; }
+  .about-timeline__card { padding: 18px; }
+  .about-timeline__card h3 { font-size: 17px; }
+  .about-gratitude__card { padding: 20px; }
+  .about-gratitude__card::before { font-size: 44px; top: 10px; right: 16px; }
+  .about-gratitude__card--featured .about-gratitude__to { font-size: 18px; }
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+  .about-hero { min-height: auto; }
+  .about-hero__content { padding: 30px 20px; }
+  .about-hero__photo { width: 160px; }
+  .about-numbers { background: #eee; border: 1px solid #ccc; }
+  .about-numbers__value { color: #333; }
+  .about-timeline::before { background: #999; }
+  .about-gratitude { display: block; }
+  .about-gratitude__card { break-inside: avoid; margin-bottom: 12px; }
+}
