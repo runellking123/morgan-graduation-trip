@@ -685,6 +685,83 @@
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
+  /** Sort key: 0 = free, 1–4 = $ count, 99 = unknown text */
+  function priceRank(place) {
+    var raw = String(place.price || '').trim();
+    if (/^free$/i.test(raw)) return 0;
+    var n = (raw.match(/\$/g) || []).length;
+    return n > 0 ? n : 99;
+  }
+
+  /**
+   * Structured price for cards/modal (Google-style $ scale + short label).
+   * mod: free | d1–d4 | unknown
+   */
+  function priceTier(place) {
+    var raw = String(place.price || '').trim();
+    if (/^free$/i.test(raw)) {
+      return { rank: 0, dots: '', label: 'Free', mod: 'free' };
+    }
+    var n = (raw.match(/\$/g) || []).length;
+    if (n <= 0) {
+      return { rank: 99, dots: '', label: raw, mod: 'unknown', raw: raw };
+    }
+    var labels = ['', 'Budget', 'Moderate', 'Upscale', 'Splurge'];
+    var label = labels[n] || 'Splurge';
+    var dots = '';
+    for (var i = 0; i < n; i++) dots += '$';
+    return { rank: n, dots: dots, label: label, mod: 'd' + Math.min(n, 4) };
+  }
+
+  function priceRowHtml(place) {
+    var t = priceTier(place);
+    if (t.mod === 'unknown') {
+      return (
+        '<div class="place-card__price">' +
+        '<span class="price-tier price-tier--unknown">' +
+        escapeHtml(t.raw) +
+        '</span></div>'
+      );
+    }
+    if (t.mod === 'free') {
+      return (
+        '<div class="place-card__price">' +
+        '<span class="price-tier price-tier--free">Free</span>' +
+        '</div>'
+      );
+    }
+    return (
+      '<div class="place-card__price">' +
+      '<span class="price-tier price-tier--' +
+      t.mod +
+      '" title="' +
+      escapeAttr(t.label + ' — typical entrée range') +
+      '">' +
+      '<span class="price-tier__dots">' +
+      escapeHtml(t.dots) +
+      '</span></span>' +
+      '<span class="price-tier__label">' +
+      escapeHtml(t.label) +
+      '</span>' +
+      '</div>'
+    );
+  }
+
+  function priceModalInnerHtml(place) {
+    var t = priceTier(place);
+    if (t.mod === 'unknown') return escapeHtml(place.price);
+    if (t.mod === 'free') return '<span class="price-tier price-tier--free">Free</span>';
+    return (
+      '<span class="price-tier price-tier--' +
+      t.mod +
+      '"><span class="price-tier__dots">' +
+      escapeHtml(t.dots) +
+      '</span></span> <span class="price-tier__label">' +
+      escapeHtml(t.label) +
+      '</span>'
+    );
+  }
+
   /* Cards use bundled images under images/explore/<id>; Picsum remains a fallback if an image fails to load. */
   var GALLERY_FALLBACK_PIC_IDS = { eat: 429, water: 1050, play: 206, outdoors: 575, shop: 366 };
 
@@ -763,9 +840,7 @@
       escapeHtml(place.address) +
       '</p>' +
       starsHtml(place.rating) +
-      '<div class="place-card__price">' +
-      escapeHtml(place.price) +
-      '</div>' +
+      priceRowHtml(place) +
       '<p class="place-card__desc">' +
       escapeHtml(place.description) +
       '</p>' +
@@ -828,7 +903,26 @@
       '<span class="explore-toc__label">Jump to</span>' + linkParts.join('');
   }
 
+  function captureExploreOpenSections() {
+    var map = {};
+    [].forEach.call(els.main.querySelectorAll('details.explore-cat'), function (d) {
+      if (d.open) map[d.id] = true;
+    });
+    return map;
+  }
+
+  function applyExploreHash() {
+    var id = location.hash.replace(/^#/, '');
+    if (!id || id.indexOf('explore-') !== 0) return;
+    var det = document.getElementById(id);
+    if (det && det.tagName === 'DETAILS') {
+      det.open = true;
+    }
+  }
+
   function renderSections() {
+    var wasOpen = captureExploreOpenSections();
+
     els.main.innerHTML = '';
     var any = false;
 
@@ -839,10 +933,26 @@
       if (!inSection.length) return;
       any = true;
 
+      inSection.sort(function (a, b) {
+        var ra = priceRank(a);
+        var rb = priceRank(b);
+        if (ra !== rb) return ra - rb;
+        return a.name.localeCompare(b.name);
+      });
+
       var meta = SECTION_LABELS[sk];
-      var section = document.createElement('section');
-      section.className = 'explore-cat';
-      section.id = 'explore-' + sk;
+      var sid = 'explore-' + sk;
+
+      var details = document.createElement('details');
+      details.className = 'explore-cat';
+      details.id = sid;
+      if (wasOpen[sid]) details.open = true;
+
+      var summary = document.createElement('summary');
+      summary.className = 'explore-cat__summary';
+
+      var sumInner = document.createElement('div');
+      sumInner.className = 'explore-cat__summary-inner';
 
       var head = document.createElement('header');
       head.className = 'explore-cat__head';
@@ -854,15 +964,22 @@
       blurb.textContent = meta.blurb;
       head.appendChild(h2);
       head.appendChild(blurb);
-      section.appendChild(head);
+      sumInner.appendChild(head);
+      summary.appendChild(sumInner);
+      details.appendChild(summary);
+
+      var body = document.createElement('div');
+      body.className = 'explore-cat__body';
 
       var grid = document.createElement('div');
       grid.className = 'explore-grid explore-grid--cat';
       inSection.forEach(function (place) {
         grid.appendChild(createPlaceWrap(place));
       });
-      section.appendChild(grid);
-      els.main.appendChild(section);
+      body.appendChild(grid);
+      details.appendChild(body);
+
+      els.main.appendChild(details);
     });
 
     if (!any) {
@@ -873,6 +990,7 @@
     }
 
     renderToc();
+    applyExploreHash();
   }
 
   function fullRefresh() {
@@ -938,7 +1056,8 @@
       '</span><span class="explore-modal__rating-num">' +
       place.rating +
       ' / 5</span></dd>';
-    rows += '<dt>Price</dt><dd class="explore-modal__dd">' + escapeHtml(place.price) + '</dd>';
+    rows +=
+      '<dt>Price</dt><dd class="explore-modal__dd explore-modal__price">' + priceModalInnerHtml(place) + '</dd>';
     rows += '</dl>';
 
     els.modalBody.innerHTML = rows + els.modalActionsTemplate;
@@ -1006,6 +1125,8 @@
       var pick = pool[Math.floor(Math.random() * pool.length)];
       var wrap = els.main.querySelector('.explore-card-wrap[data-place-id="' + pick.id + '"]');
       if (wrap) {
+        var sectionDetails = wrap.closest('details.explore-cat');
+        if (sectionDetails) sectionDetails.open = true;
         wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
         var card = wrap.querySelector('.place-card');
         if (card) {
@@ -1094,6 +1215,7 @@
       '</div>';
 
     bind();
+    window.addEventListener('hashchange', applyExploreHash);
     fullRefresh();
   }
 
