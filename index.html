@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F1D36">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Morgan King's Doctoral Graduation Trip — Fort Lauderdale 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
   :root {
     --navy: #0F1D36;
@@ -319,6 +324,7 @@
     list-style: none;
     cursor: pointer;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
   details.section > summary::-webkit-details-marker { display: none; }
   details.section > summary .section-header {
@@ -369,14 +375,59 @@
     body { font-size: 12px; }
   }
 
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 28px; }
-    .hero-photo { max-width: 180px; }
+  /* Tablet */
+  @media (max-width: 768px) {
     .card-grid { grid-template-columns: 1fr; }
-    .card .detail-grid { grid-template-columns: 1fr; }
-    .timeline-item { flex-direction: column; gap: 4px; }
-    .toc-inner { justify-content: flex-start; }
-    .hero .meta { flex-direction: column; gap: 8px; align-items: center; }
+    .container { padding: 24px 16px 40px; }
+    .hero-content { padding: 36px 20px 32px; }
+    .hero h1 { font-size: 32px; }
+    .hero-photo { max-width: 200px; }
+    .section-header h2 { font-size: 20px; }
+    .card { padding: 18px; }
+    .day-card { padding: 18px 20px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    body { font-size: 14px; }
+    .hero h1 { font-size: 26px; }
+    .hero .subtitle { font-size: 16px; }
+    .hero .degree { font-size: 13px; margin-bottom: 16px; }
+    .hero-photo { max-width: 160px; margin-bottom: 16px; }
+    .hero-content { padding: 28px 16px 24px; }
+    .hero .meta {
+      flex-direction: column; gap: 6px; align-items: center;
+      padding: 10px 14px; font-size: 12px;
+    }
+    .toc { padding: 10px 12px; }
+    .toc-inner { gap: 3px 4px; justify-content: flex-start; }
+    .toc a { font-size: 11px; padding: 4px 7px; }
+    .container { padding: 16px 12px 32px; }
+    .section-header { gap: 8px; margin-bottom: 14px; padding-bottom: 8px; }
+    .section-header .num { width: 32px; height: 32px; font-size: 13px; }
+    .section-header h2 { font-size: 18px; }
+    .card { padding: 14px; margin-bottom: 12px; border-radius: 10px; }
+    .card h3 { font-size: 16px; }
+    .card .detail-grid { grid-template-columns: 1fr; gap: 2px 0; }
+    .card .detail-grid dt { font-weight: 700; margin-top: 6px; }
+    .card .price { font-size: 18px; }
+    .card .tag { font-size: 10px; padding: 2px 8px; }
+    .day-card { padding: 14px 16px; }
+    .day-card h3 { font-size: 17px; }
+    .timeline-item { flex-direction: column; gap: 2px; }
+    .timeline-item .time { min-width: unset; font-size: 13px; }
+    .timeline-item .event { font-size: 13px; }
+    .tip { padding: 10px 14px; font-size: 13px; }
+    details.section { margin-bottom: 32px; }
+    details.section > summary .section-header { padding-right: 32px; }
+    details.section > summary .section-header::after { font-size: 20px; }
+    .checklist li { padding: 8px 12px; font-size: 13px; }
+    .footer { padding: 30px 16px; }
+    /* Budget table horizontal scroll */
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    thead, tbody, tr { min-width: 500px; }
   }
 </style>
 </head>
@@ -386,7 +437,7 @@
 <div class="hero">
   <div class="hero-deco-top"></div>
   <div class="hero-content">
-    <img src="Morgan's%20Doctoral%20Gown%20Head%20Shot%202.PNG" alt="Dr. Morgan King in doctoral regalia" class="hero-photo">
+    <img src="morgan-photo.jpg" alt="Dr. Morgan King in doctoral regalia" class="hero-photo" width="320" height="480" loading="eager">
     <h1>Dr. Morgan King</h1>
     <div class="subtitle">Doctoral Graduation Celebration Trip</div>
     <div class="degree">Capella University &bull; Ceremony 2 &mdash; All Doctoral Graduates</div>
