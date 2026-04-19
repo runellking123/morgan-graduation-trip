@@ -30,7 +30,7 @@
 <main class="container">
   <div class="page-head">
     <h1 class="page-title">Ceremony &amp; schedule</h1>
-    <p class="page-intro">Graduation-day logistics and the day-by-day agenda so everyone knows where to be and when.</p>
+    <p class="page-intro">Graduation-day logistics and the day-by-day agenda so everyone knows where to be and when. <strong>Tap a day</strong> to expand the full timeline &mdash; all days start collapsed so the page stays scannable.</p>
   </div>
 
   <div class="section" id="graduation">
@@ -93,9 +93,14 @@
       <h2>Day-by-Day Detailed Agenda</h2>
     </div>
 <!-- THURSDAY -->
-  <div class="day-card">
-    <div class="day-label">Day 1</div>
-    <h3>Thursday, June 25 &mdash; Road Trip: Houston to Fort Lauderdale (Straight Through)</h3>
+  <details class="day-details" id="schedule-thu">
+    <summary>
+      <div class="day-card day-card--summary">
+        <div class="day-label">Day 1</div>
+        <h3>Thursday, June 25 &mdash; Road Trip: Houston to Fort Lauderdale (Straight Through)</h3>
+      </div>
+    </summary>
+    <div class="day-card__expandable">
     <div class="timeline-item">
       <div class="time">4:00 AM</div>
       <div class="event"><strong>Wake up &amp; cook breakfast at home.</strong> Eat a full meal before hitting the road. Final packing, load cooler with snacks and drinks, kid entertainment ready.</div>
@@ -124,12 +129,18 @@
       <div class="time">9:30 PM</div>
       <div class="event"><strong>Arrive in Fort Lauderdale!</strong> Head to Airbnb. Unload, assign rooms, settle in. Everyone showers and crashes. ~16.5 hours total including stops.</div>
     </div>
-  </div>
+    </div>
+  </details>
 
   <!-- FRIDAY -->
-  <div class="day-card">
-    <div class="day-label">Day 2</div>
-    <h3>Friday, June 26 &mdash; Rest, Explore &amp; Pre-Graduation Day</h3>
+  <details class="day-details" id="schedule-fri">
+    <summary>
+      <div class="day-card day-card--summary">
+        <div class="day-label">Day 2</div>
+        <h3>Friday, June 26 &mdash; Rest, Explore &amp; Pre-Graduation Day</h3>
+      </div>
+    </summary>
+    <div class="day-card__expandable">
     <div class="timeline-item">
       <div class="time">9:00 AM</div>
       <div class="event"><strong>Sleep in &amp; recover.</strong> Everyone rests after the long drive. Wake up naturally.</div>
@@ -158,12 +169,18 @@
       <div class="time">8:30 PM</div>
       <div class="event"><strong>Return to Airbnb.</strong> Lay out graduation outfits. Set alarms. Early night &mdash; big day tomorrow!</div>
     </div>
-  </div>
+    </div>
+  </details>
 
   <!-- SATURDAY -->
-  <div class="day-card highlight">
-    <div class="day-label">Day 3 &mdash; GRADUATION DAY</div>
-    <h3>Saturday, June 27 &mdash; Graduation Day!</h3>
+  <details class="day-details highlight" id="schedule-sat">
+    <summary>
+      <div class="day-card day-card--summary highlight">
+        <div class="day-label">Day 3 &mdash; GRADUATION DAY</div>
+        <h3>Saturday, June 27 &mdash; Graduation Day!</h3>
+      </div>
+    </summary>
+    <div class="day-card__expandable">
     <div class="timeline-item">
       <div class="time">6:30 AM</div>
       <div class="event"><strong>Wake up.</strong> Showers, get dressed in graduation-day outfits. Take group photos at the Airbnb before leaving.</div>
@@ -220,12 +237,18 @@
       <div class="time">9:00 PM</div>
       <div class="event"><strong>Return to Airbnb.</strong> Dessert, toast to Dr. Morgan King, relax and reminisce. Pack for Sunday departure.</div>
     </div>
-  </div>
+    </div>
+  </details>
 
   <!-- SUNDAY -->
-  <div class="day-card">
-    <div class="day-label">Day 4</div>
-    <h3>Sunday, June 28 &mdash; Fun Activity &amp; Drive Home (Straight Through)</h3>
+  <details class="day-details" id="schedule-sun">
+    <summary>
+      <div class="day-card day-card--summary">
+        <div class="day-label">Day 4</div>
+        <h3>Sunday, June 28 &mdash; Fun Activity &amp; Drive Home (Straight Through)</h3>
+      </div>
+    </summary>
+    <div class="day-card__expandable">
     <div class="timeline-item">
       <div class="time">7:00 AM</div>
       <div class="event"><strong>Wake up.</strong> Pack all belongings, clean Airbnb, load van.</div>
@@ -265,7 +288,8 @@
       <div class="time">5:00 AM</div>
       <div class="event"><strong>Arrive Houston (Monday morning).</strong> Home sweet home. ~16 hours total driving with stops. Drop off passengers, return Sprinter van.</div>
     </div>
-  </div>
+    </div>
+  </details>
   </div>
 
 </main>

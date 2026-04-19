@@ -221,6 +221,60 @@
   .timeline-item .event { font-size: 14px; color: var(--gray-700); }
   .timeline-item .event strong { color: var(--gray-900); }
 
+  /* Collapsible day-by-day agenda */
+  details.day-details {
+    margin-bottom: 20px;
+  }
+  details.day-details > summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  details.day-details > summary::-webkit-details-marker { display: none; }
+  details.day-details .day-card--summary {
+    position: relative;
+    margin-bottom: 0;
+    padding-right: 42px;
+    border-radius: 0 12px 0 0;
+    transition: border-radius 0.15s ease;
+  }
+  details.day-details:not([open]) .day-card--summary {
+    border-radius: 0 12px 12px 0;
+  }
+  details.day-details .day-card--summary::after {
+    content: '+';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  details.day-details[open] .day-card--summary::after {
+    content: '\2212';
+  }
+  details.day-details .day-card--summary:hover::after {
+    color: var(--gold-bright);
+  }
+  details.day-details .day-card__expandable {
+    background: var(--white);
+    border-left: 5px solid var(--navy);
+    border-radius: 0 0 12px 0;
+    padding: 8px 28px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-top: 1px solid var(--gray-100);
+  }
+  details.day-details.highlight .day-card--summary,
+  details.day-details.highlight .day-card__expandable {
+    border-left-color: var(--gold);
+  }
+  details.day-details[open] .day-card__expandable {
+    animation: fadeIn 0.3s ease;
+  }
+
   /* ===== TABLES ===== */
   table {
     width: 100%; border-collapse: collapse;
@@ -338,6 +392,8 @@
     details.section .section-body { display: block !important; }
     details.section > summary { list-style: none; }
     details.section > summary .section-header::after { display: none; }
+    details.day-details .day-card__expandable { display: block !important; }
+    details.day-details .day-card--summary::after { display: none; }
   }
 
   /* Tablet */
@@ -381,6 +437,9 @@
     .timeline-item { flex-direction: column; gap: 2px; }
     .timeline-item .time { min-width: unset; font-size: 13px; }
     .timeline-item .event { font-size: 13px; }
+    details.day-details .day-card--summary { padding-right: 36px; }
+    details.day-details .day-card__expandable { padding: 6px 16px 16px; }
+    details.day-details .day-card--summary::after { right: 12px; font-size: 20px; }
     .tip { padding: 10px 14px; font-size: 13px; }
     details.section { margin-bottom: 32px; }
     details.section > summary .section-header { padding-right: 32px; }

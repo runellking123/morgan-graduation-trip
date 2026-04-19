@@ -3,25 +3,39 @@
 
   var STORAGE_KEY = 'morganTripPlaces';
 
-  var CHIPS = ['All', 'Dining', 'Waterfront', 'Brunch', 'Kid-Friendly', 'Nature', 'Free'];
+  var CHIPS = [
+    'All',
+    'Dining',
+    'Waterfront',
+    'Brunch',
+    'Kid-Friendly',
+    'Nature',
+    'Free',
+    'Coffee',
+    'Shopping',
+  ];
 
-  var SECTION_ORDER = ['eat', 'water', 'play', 'outdoors'];
+  var SECTION_ORDER = ['eat', 'water', 'play', 'outdoors', 'shop'];
   var SECTION_LABELS = {
     eat: {
       title: 'Where to eat',
-      blurb: 'Celebration dinners, waterfront tables, brunch, and easy group meals near the ceremony.',
+      blurb: 'Celebration dinners, waterfront decks, brunch, coffee stops, and easy group meals.',
     },
     water: {
       title: 'Water & scenic',
-      blurb: 'River cruises, the Riverwalk, and classic South Florida scenery.',
+      blurb: 'River cruises, the Riverwalk, history on the water, and classic South Florida views.',
     },
     play: {
       title: 'Museums & thrills',
-      blurb: 'Indoor fun when you want a break from the heat — great for kids and adults.',
+      blurb: 'Indoor fun when you want a break from the heat — art, science, and hands-on exhibits.',
     },
     outdoors: {
       title: 'Beach, parks & nature',
-      blurb: 'Sandy shores, trails, and wildlife without a tight schedule.',
+      blurb: 'Shores, mangrove trails, gardens, and wildlife at a relaxed pace.',
+    },
+    shop: {
+      title: 'Shopping & strolls',
+      blurb: 'Walkable districts, malls, and outlets when you want to wander between meals.',
     },
   };
 
@@ -221,6 +235,276 @@
       tags: ['Nature', 'Affordable'],
       hours: '8 AM–sunset daily.',
     },
+    {
+      id: 'louie-bossi',
+      sectionKey: 'eat',
+      name: "Louie Bossi's Ristorante Bar Pizzeria",
+      kind: 'dining',
+      categories: ['Dining', 'Kid-Friendly', 'Waterfront'],
+      address: '100 E Las Olas Blvd, Fort Lauderdale, FL 33301',
+      phone: '(954) 306-2640',
+      website: 'https://www.louiebossi.com',
+      price: '$$',
+      rating: 4.6,
+      description: 'Bustling Italian on Las Olas — pizza, pasta, and patio energy; strong for groups.',
+      tags: ['Las Olas', 'Italian'],
+      hours: 'Lunch and dinner daily — reserve for weekends.',
+    },
+    {
+      id: 'boatyard',
+      sectionKey: 'eat',
+      name: 'Boatyard',
+      kind: 'dining',
+      categories: ['Dining', 'Waterfront', 'Brunch'],
+      address: '1555 SE 17th St, Fort Lauderdale, FL 33316',
+      phone: '(954) 525-7400',
+      website: 'https://www.boatyardfl.com',
+      price: '$$$',
+      rating: 4.5,
+      description: 'Upscale waterfront seafood and steaks; marina views and a celebratory vibe.',
+      tags: ['Seafood', 'Marina'],
+      hours: 'Brunch weekends; dinner nightly — check site.',
+    },
+    {
+      id: 'kaluz-restaurant',
+      sectionKey: 'eat',
+      name: 'Kaluz Restaurant',
+      kind: 'dining',
+      categories: ['Dining', 'Waterfront', 'Brunch'],
+      address: '3300 E Commercial Blvd, Fort Lauderdale, FL 33308',
+      phone: '(954) 626-0373',
+      website: 'https://www.kaluzrestaurant.com',
+      price: '$$',
+      rating: 4.4,
+      description: 'Casual waterfront dining with broad American menu — good for mixed tastes.',
+      tags: ['Waterfront', 'Groups'],
+      hours: 'Brunch Sat–Sun; lunch and dinner — confirm on site.',
+    },
+    {
+      id: 'blue-moon-fish',
+      sectionKey: 'eat',
+      name: 'Blue Moon Fish Co.',
+      kind: 'dining',
+      categories: ['Dining', 'Waterfront', 'Brunch'],
+      address: '4405 W Tradewinds Ave, Lauderdale-By-The-Sea, FL 33308',
+      phone: '(954) 630-1810',
+      website: 'https://www.bluemoonfishco.com',
+      price: '$$$',
+      rating: 4.7,
+      description: 'Inlet views with upscale seafood — memorable spot for a splurge lunch or dinner.',
+      tags: ['Seafood', 'Views'],
+      hours: 'Brunch Sun; lunch and dinner — reservations recommended.',
+    },
+    {
+      id: 'foxy-brown',
+      sectionKey: 'eat',
+      name: 'Foxy Brown',
+      kind: 'dining',
+      categories: ['Dining', 'Brunch', 'Kid-Friendly'],
+      address: '476 N Federal Hwy, Fort Lauderdale, FL 33301',
+      phone: '(954) 630-3389',
+      website: 'https://www.foxybrownftl.com',
+      price: '$$',
+      rating: 4.6,
+      description: 'Neighborhood brunch and lunch favorite — sandwiches, salads, and comfort plates.',
+      tags: ['Brunch', 'Casual'],
+      hours: 'Breakfast and lunch daily; closed some evenings — verify hours.',
+    },
+    {
+      id: 'henrys-sandwich',
+      sectionKey: 'eat',
+      name: "Henry's Sandwich Station",
+      kind: 'dining',
+      categories: ['Dining', 'Kid-Friendly'],
+      address: '545 NW 1st Ave, Fort Lauderdale, FL 33301',
+      phone: '(954) 530-2817',
+      website: 'https://www.henryssandwichstation.com',
+      price: '$',
+      rating: 4.8,
+      description: 'Serious sandwiches and quick takeout — easy before the beach or convention center.',
+      tags: ['Quick Bite', 'Local'],
+      hours: 'Typically Mon–Sat — check site.',
+    },
+    {
+      id: 'stork-patisserie',
+      sectionKey: 'eat',
+      name: "Stork's Bakery & Coffee House",
+      kind: 'dining',
+      categories: ['Dining', 'Coffee', 'Brunch'],
+      address: '210 S Federal Hwy, Fort Lauderdale, FL 33301',
+      phone: '(954) 467-1225',
+      website: 'https://www.storksbakery.com',
+      price: '$',
+      rating: 4.7,
+      description: 'European-style bakery and espresso — pastries, quiche, and strong coffee.',
+      tags: ['Coffee', 'Pastries'],
+      hours: 'Early morning through afternoon — verify daily hours.',
+    },
+    {
+      id: 'carrie-b-cruises',
+      sectionKey: 'water',
+      name: 'Carrie B Cruises',
+      kind: 'activity',
+      categories: ['Waterfront', 'Kid-Friendly'],
+      address: '801 Seabreeze Blvd, Fort Lauderdale, FL 33316 (Bahia Mar area)',
+      phone: '(954) 768-9920',
+      website: 'https://www.carrieb.com',
+      price: '$$',
+      rating: 4.5,
+      description: 'Sightseeing cruises on the Intracoastal — alternative vibe to the Jungle Queen.',
+      tags: ['Cruise', 'Sightseeing'],
+      hours: 'Seasonal schedule — book ahead on carrieb.com.',
+    },
+    {
+      id: 'stranahan-house',
+      sectionKey: 'water',
+      name: 'Historic Stranahan House Museum',
+      kind: 'activity',
+      categories: ['Waterfront', 'Nature', 'Kid-Friendly'],
+      address: '335 SE 6th Ave, Fort Lauderdale, FL 33301',
+      phone: '(954) 524-4723',
+      website: 'https://www.stranahanhouse.org',
+      price: '$',
+      rating: 4.6,
+      description: "Fort Lauderdale's oldest home — guided tours on the New River; quick culture stop.",
+      tags: ['History', 'Tour'],
+      hours: 'Tours Wed–Sun — buy tickets online.',
+    },
+    {
+      id: 'nsu-art-museum',
+      sectionKey: 'play',
+      name: 'NSU Art Museum Fort Lauderdale',
+      kind: 'activity',
+      categories: ['Kid-Friendly'],
+      address: '1 E Las Olas Blvd, Fort Lauderdale, FL 33301',
+      phone: '(954) 525-5500',
+      website: 'https://www.nsuartmuseum.org',
+      price: '$$',
+      rating: 4.5,
+      description: 'Contemporary art in the heart of Las Olas — 1–2 hours, air-conditioned.',
+      tags: ['Art', 'Downtown'],
+      hours: 'Tue–Sun; closed Mon — see site.',
+    },
+    {
+      id: 'young-at-art',
+      sectionKey: 'play',
+      name: 'Young At Art Museum',
+      kind: 'activity',
+      categories: ['Kid-Friendly'],
+      address: '8000 W Broward Blvd, Plantation, FL 33388',
+      phone: '(954) 424-0085',
+      website: 'https://www.youngatartmuseum.org',
+      price: '$$',
+      rating: 4.5,
+      description: "Hands-on children's art museum — ideal for younger kids on a hot afternoon.",
+      tags: ['Kids', 'Creative'],
+      hours: 'Thu–Sun typical — confirm before you go.',
+    },
+    {
+      id: 'flamingo-gardens',
+      sectionKey: 'outdoors',
+      name: 'Flamingo Gardens',
+      kind: 'activity',
+      categories: ['Nature', 'Kid-Friendly'],
+      address: '3750 S Flamingo Rd, Davie, FL 33330',
+      phone: '(954) 473-2955',
+      website: 'https://www.flamingogardens.org',
+      price: '$$',
+      rating: 4.6,
+      description: 'Botanical gardens, wildlife sanctuary, and flamingos — ~30 min west of downtown.',
+      tags: ['Wildlife', 'Garden'],
+      hours: 'Daily 9:30 AM–5 PM — last admission 4 PM.',
+    },
+    {
+      id: 'anne-kolb-nature',
+      sectionKey: 'outdoors',
+      name: 'Anne Kolb Nature Center',
+      kind: 'activity',
+      categories: ['Nature', 'Kid-Friendly', 'Free'],
+      address: '751 Sheridan St, Hollywood, FL 33019',
+      phone: '(954) 357-5180',
+      website: 'https://www.broward.org/Parks/Pages/AnneKolb.aspx',
+      price: 'Free',
+      rating: 4.7,
+      description: 'Elevated mangrove boardwalks and exhibits — calm nature break near Hollywood Beach.',
+      tags: ['Boardwalk', 'Birding'],
+      hours: 'Wed–Sun typical hours — check Broward site.',
+    },
+    {
+      id: 'john-u-lloyd-beach',
+      sectionKey: 'outdoors',
+      name: 'Dr. Von D. Mizell-Eula Johnson State Park',
+      kind: 'activity',
+      categories: ['Nature', 'Kid-Friendly'],
+      address: '6503 N Ocean Dr, Dania Beach, FL 33004',
+      phone: '(954) 923-2833',
+      website: 'https://www.floridastateparks.org/parks-and-trails/dr-von-d-mizell-eula-johnson-state-park',
+      price: '$',
+      rating: 4.7,
+      description: 'Quiet beach, reef snorkeling, and picnic pavilions — different vibe than busy A1A.',
+      tags: ['Beach', 'Snorkel'],
+      hours: '8 AM until sunset.',
+    },
+    {
+      id: 'secret-woods',
+      sectionKey: 'outdoors',
+      name: 'Secret Woods Nature Center',
+      kind: 'activity',
+      categories: ['Nature', 'Kid-Friendly', 'Free'],
+      address: '2701 W State Rd 84, Fort Lauderdale, FL 33312',
+      phone: '(954) 357-8888',
+      website: 'https://www.broward.org/Parks/Pages/SecretWoods.aspx',
+      price: 'Free',
+      rating: 4.6,
+      description: 'Short trails and a small exhibit hall — easy nature stop without a long drive.',
+      tags: ['Trails', 'Easy'],
+      hours: 'Wed–Sun — verify on Broward site.',
+    },
+    {
+      id: 'las-olas-district',
+      sectionKey: 'shop',
+      name: 'Las Olas Boulevard',
+      kind: 'shopping',
+      categories: ['Shopping', 'Free', 'Kid-Friendly'],
+      address: 'E Las Olas Blvd between SE 6th Ave & Federal Hwy, Fort Lauderdale, FL',
+      phone: '',
+      website: 'https://www.lasolasboulevard.com',
+      price: 'Free',
+      rating: 4.7,
+      description: 'Flagship stroll — boutiques, galleries, and people-watching between meals.',
+      tags: ['Walkable', 'Boutiques'],
+      hours: 'Store hours vary; public sidewalk anytime.',
+    },
+    {
+      id: 'the-galleria',
+      sectionKey: 'shop',
+      name: 'The Galleria at Fort Lauderdale',
+      kind: 'shopping',
+      categories: ['Shopping', 'Kid-Friendly'],
+      address: '2414 E Sunrise Blvd, Fort Lauderdale, FL 33304',
+      phone: '(954) 564-1036',
+      website: 'https://www.galleriamallfl.com',
+      price: '$$',
+      rating: 4.4,
+      description: 'Full-service mall — department stores, AC, and food court for a rainy afternoon.',
+      tags: ['Mall', 'AC'],
+      hours: 'Mon–Sat 10 AM–9 PM, Sun 12–6 PM — confirm holidays.',
+    },
+    {
+      id: 'sawgrass-mills',
+      sectionKey: 'shop',
+      name: 'Sawgrass Mills',
+      kind: 'shopping',
+      categories: ['Shopping', 'Kid-Friendly'],
+      address: '12801 W Sunrise Blvd, Sunrise, FL 33323',
+      phone: '(954) 846-2300',
+      website: 'https://www.simon.com/mall/sawgrass-mills',
+      price: '$$',
+      rating: 4.5,
+      description: 'Huge outlet mall — worth the ~25 min drive if shoppers want deals.',
+      tags: ['Outlets', 'All Day'],
+      hours: 'Typically 10 AM–9 PM — check Simon site.',
+    },
   ];
 
   function telHref(phone) {
@@ -310,7 +594,11 @@
 
   function placeMatchesSearch(place, q) {
     if (!q) return true;
-    return place.name.toLowerCase().indexOf(q) !== -1;
+    var parts = [place.name, place.description || '', place.address || '', place.hours || ''];
+    if (place.tags && place.tags.length) parts.push(place.tags.join(' '));
+    if (place.categories && place.categories.length) parts.push(place.categories.join(' '));
+    var hay = parts.join(' ').toLowerCase();
+    return hay.indexOf(q) !== -1;
   }
 
   function placeMatchesStat(place) {
@@ -368,8 +656,14 @@
 
   function createPlaceWrap(place) {
     var st = getState(place.id);
-    var badgeClass = place.kind === 'dining' ? 'place-card__badge--dining' : 'place-card__badge--activity';
-    var badgeText = place.kind === 'dining' ? 'Dining' : 'Activity';
+    var badgeClass =
+      place.kind === 'dining'
+        ? 'place-card__badge--dining'
+        : place.kind === 'shopping'
+          ? 'place-card__badge--shopping'
+          : 'place-card__badge--activity';
+    var badgeText =
+      place.kind === 'dining' ? 'Dining' : place.kind === 'shopping' ? 'Shops' : 'Activity';
 
     var wrap = document.createElement('div');
     wrap.className = 'explore-card-wrap';
@@ -528,8 +822,16 @@
   function openModal(place) {
     var st = getState(place.id);
     els.modalTitle.textContent = place.name;
-    els.modalBadge.textContent = place.kind === 'dining' ? 'Dining' : 'Activity';
-    els.modalBadge.className = 'place-card__badge ' + (place.kind === 'dining' ? 'place-card__badge--dining' : 'place-card__badge--activity');
+    var modalKind =
+      place.kind === 'dining' ? 'Dining' : place.kind === 'shopping' ? 'Shops' : 'Activity';
+    var modalBadgeClass =
+      place.kind === 'dining'
+        ? 'place-card__badge--dining'
+        : place.kind === 'shopping'
+          ? 'place-card__badge--shopping'
+          : 'place-card__badge--activity';
+    els.modalBadge.textContent = modalKind;
+    els.modalBadge.className = 'place-card__badge ' + modalBadgeClass;
 
     var rows = '<dl class="explore-modal__dl">';
     rows += '<dt>Address</dt><dd class="explore-modal__dd">' + escapeHtml(place.address) + '</dd>';

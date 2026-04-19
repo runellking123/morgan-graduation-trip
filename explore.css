@@ -378,6 +378,12 @@
   border: 1px solid rgba(197, 160, 48, 0.35);
 }
 
+.place-card__badge--shopping {
+  background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%);
+  color: var(--gold);
+  border: 1px solid rgba(197, 160, 48, 0.4);
+}
+
 .place-card__body {
   padding-top: 28px;
 }
