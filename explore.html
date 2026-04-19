@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="explore.css">
 
-<title>Eat & Explore — Morgan King Graduation Trip</title>
-<meta name="description" content="Interactive guide to Fort Lauderdale restaurants and kid-friendly activities for the graduation trip.">
+<title>For Visitors — Eat & Explore — Morgan King Graduation Trip</title>
+<meta name="description" content="Fort Lauderdale ideas for graduation guests: dining, waterfront, museums, and outdoor time — organized by category.">
 </head>
 <body>
 <header class="site-header">
@@ -36,10 +36,12 @@
         <path d="M6 3v18M18 3v18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         <path d="M9 8v8M15 8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
-      <span>Eat &amp; Explore</span>
+      <span>For visitors: Eat &amp; explore</span>
     </h1>
-    <p class="page-intro">Filter restaurants and activities, save favorites, and open details when you are ready to book or visit.</p>
+    <p class="page-intro">Ideas for family and friends in town for graduation &mdash; organized by category. Filter with the tags, search by name, star your favorites, and tap a card for maps and contact info.</p>
   </div>
+
+  <nav class="explore-toc" id="explore-toc" aria-label="Jump to categories"></nav>
 
   <div class="explore-search-wrap">
     <label for="explore-search" class="visually-hidden">Search places by name</label>
@@ -85,7 +87,7 @@
     </button>
   </div>
 
-  <div id="explore-grid" class="explore-grid" aria-live="polite"></div>
+  <div id="explore-main" class="explore-main" aria-live="polite"></div>
 </main>
 
 <div id="explore-toast" class="explore-toast" role="status"></div>

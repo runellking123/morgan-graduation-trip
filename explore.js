@@ -5,9 +5,30 @@
 
   var CHIPS = ['All', 'Dining', 'Waterfront', 'Brunch', 'Kid-Friendly', 'Nature', 'Free'];
 
+  var SECTION_ORDER = ['eat', 'water', 'play', 'outdoors'];
+  var SECTION_LABELS = {
+    eat: {
+      title: 'Where to eat',
+      blurb: 'Celebration dinners, waterfront tables, brunch, and easy group meals near the ceremony.',
+    },
+    water: {
+      title: 'Water & scenic',
+      blurb: 'River cruises, the Riverwalk, and classic South Florida scenery.',
+    },
+    play: {
+      title: 'Museums & thrills',
+      blurb: 'Indoor fun when you want a break from the heat — great for kids and adults.',
+    },
+    outdoors: {
+      title: 'Beach, parks & nature',
+      blurb: 'Sandy shores, trails, and wildlife without a tight schedule.',
+    },
+  };
+
   var places = [
     {
       id: 'shooters-waterfront',
+      sectionKey: 'eat',
       name: 'Shooters Waterfront',
       kind: 'dining',
       categories: ['Dining', 'Waterfront'],
@@ -22,6 +43,7 @@
     },
     {
       id: 'roccos-tacos',
+      sectionKey: 'eat',
       name: "Rocco's Tacos & Tequila Bar",
       kind: 'dining',
       categories: ['Dining', 'Kid-Friendly'],
@@ -36,6 +58,7 @@
     },
     {
       id: 'lesters-diner',
+      sectionKey: 'eat',
       name: "Lester's Diner",
       kind: 'dining',
       categories: ['Dining', 'Brunch'],
@@ -50,6 +73,7 @@
     },
     {
       id: 'coconuts-by-the-water',
+      sectionKey: 'eat',
       name: 'Coconuts by the Water',
       kind: 'dining',
       categories: ['Dining', 'Waterfront', 'Kid-Friendly'],
@@ -64,6 +88,7 @@
     },
     {
       id: 'pirate-republic',
+      sectionKey: 'eat',
       name: 'The Pirate Republic Seafood & Bar',
       kind: 'dining',
       categories: ['Dining', 'Waterfront', 'Kid-Friendly'],
@@ -78,6 +103,7 @@
     },
     {
       id: 'big-city-tavern',
+      sectionKey: 'eat',
       name: 'Big City Tavern',
       kind: 'dining',
       categories: ['Dining', 'Brunch'],
@@ -92,6 +118,7 @@
     },
     {
       id: 'jungle-queen',
+      sectionKey: 'water',
       name: 'Jungle Queen Riverboat',
       kind: 'activity',
       categories: ['Waterfront', 'Kid-Friendly'],
@@ -106,6 +133,7 @@
     },
     {
       id: 'xtreme-action-park',
+      sectionKey: 'play',
       name: 'Xtreme Action Park',
       kind: 'activity',
       categories: ['Kid-Friendly'],
@@ -120,6 +148,7 @@
     },
     {
       id: 'ftl-beach',
+      sectionKey: 'outdoors',
       name: 'Fort Lauderdale Beach',
       kind: 'activity',
       categories: ['Free', 'Nature', 'Kid-Friendly'],
@@ -134,6 +163,7 @@
     },
     {
       id: 'riverwalk-water-taxi',
+      sectionKey: 'water',
       name: 'Riverwalk Fort Lauderdale & Water Taxi',
       kind: 'activity',
       categories: ['Free', 'Waterfront', 'Kid-Friendly', 'Nature'],
@@ -148,6 +178,7 @@
     },
     {
       id: 'mods',
+      sectionKey: 'play',
       name: 'Museum of Discovery & Science (MODS)',
       kind: 'activity',
       categories: ['Kid-Friendly'],
@@ -162,6 +193,7 @@
     },
     {
       id: 'butterfly-world',
+      sectionKey: 'outdoors',
       name: 'Butterfly World',
       kind: 'activity',
       categories: ['Nature', 'Kid-Friendly'],
@@ -176,6 +208,7 @@
     },
     {
       id: 'hugh-taylor-birch',
+      sectionKey: 'outdoors',
       name: 'Hugh Taylor Birch State Park',
       kind: 'activity',
       categories: ['Nature', 'Kid-Friendly'],
@@ -333,95 +366,154 @@
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
-  function renderGrid() {
-    var frag = document.createDocumentFragment();
-    var any = false;
+  function createPlaceWrap(place) {
+    var st = getState(place.id);
+    var badgeClass = place.kind === 'dining' ? 'place-card__badge--dining' : 'place-card__badge--activity';
+    var badgeText = place.kind === 'dining' ? 'Dining' : 'Activity';
 
-    places.forEach(function (place) {
-      var vis = placeVisible(place);
-      if (!vis) return;
-      any = true;
+    var wrap = document.createElement('div');
+    wrap.className = 'explore-card-wrap';
+    wrap.dataset.placeId = place.id;
 
-      var st = getState(place.id);
-      var badgeClass = place.kind === 'dining' ? 'place-card__badge--dining' : 'place-card__badge--activity';
-      var badgeText = place.kind === 'dining' ? 'Dining' : 'Fun';
+    var card = document.createElement('article');
+    card.className = 'card place-card' + (st.visited ? ' is-visited' : '');
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Details for ' + place.name);
 
-      var wrap = document.createElement('div');
-      wrap.className = 'explore-card-wrap';
-      wrap.dataset.placeId = place.id;
+    card.innerHTML =
+      '<span class="place-card__badge ' +
+      badgeClass +
+      '">' +
+      escapeHtml(badgeText) +
+      '</span>' +
+      '<div class="place-card__body">' +
+      '<h3 class="place-card__name">' +
+      escapeHtml(place.name) +
+      '</h3>' +
+      '<p class="place-card__loc">' +
+      escapeHtml(place.address) +
+      '</p>' +
+      starsHtml(place.rating) +
+      '<div class="place-card__price">' +
+      escapeHtml(place.price) +
+      '</div>' +
+      '<p class="place-card__desc">' +
+      escapeHtml(place.description) +
+      '</p>' +
+      '<div class="place-card__actions">' +
+      '<button type="button" class="place-card__action" data-action="favorite" aria-pressed="' +
+      st.favorite +
+      '" aria-label="Favorite">' +
+      (st.favorite ? iconHeartFilled : iconHeart) +
+      '</button>' +
+      '<button type="button" class="place-card__action" data-action="wantToGo" aria-pressed="' +
+      st.wantToGo +
+      '" aria-label="Want to go">' +
+      (st.wantToGo ? iconStarFilled : iconStar) +
+      '</button>' +
+      '<button type="button" class="place-card__action" data-action="visited" aria-pressed="' +
+      st.visited +
+      '" aria-label="Visited">' +
+      (st.visited ? iconCheckFilled : iconCheck) +
+      '</button>' +
+      '</div></div>';
 
-      var card = document.createElement('article');
-      card.className = 'card place-card' + (st.visited ? ' is-visited' : '');
-      card.tabIndex = 0;
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'Details for ' + place.name);
-
-      card.innerHTML =
-        '<span class="place-card__badge ' +
-        badgeClass +
-        '">' +
-        escapeHtml(badgeText) +
-        '</span>' +
-        '<div class="place-card__body">' +
-        '<h3 class="place-card__name">' +
-        escapeHtml(place.name) +
-        '</h3>' +
-        '<p class="place-card__loc">' +
-        escapeHtml(place.address) +
-        '</p>' +
-        starsHtml(place.rating) +
-        '<div class="place-card__price">' +
-        escapeHtml(place.price) +
-        '</div>' +
-        '<p class="place-card__desc">' +
-        escapeHtml(place.description) +
-        '</p>' +
-        '<div class="place-card__actions">' +
-        '<button type="button" class="place-card__action" data-action="favorite" aria-pressed="' +
-        st.favorite +
-        '" aria-label="Favorite">' +
-        (st.favorite ? iconHeartFilled : iconHeart) +
-        '</button>' +
-        '<button type="button" class="place-card__action" data-action="wantToGo" aria-pressed="' +
-        st.wantToGo +
-        '" aria-label="Want to go">' +
-        (st.wantToGo ? iconStarFilled : iconStar) +
-        '</button>' +
-        '<button type="button" class="place-card__action" data-action="visited" aria-pressed="' +
-        st.visited +
-        '" aria-label="Visited">' +
-        (st.visited ? iconCheckFilled : iconCheck) +
-        '</button>' +
-        '</div></div>';
-
-      [].forEach.call(card.querySelectorAll('.place-card__action'), function (btn) {
-        if (st[btn.dataset.action]) btn.classList.add('is-on');
-      });
-
-      wrap.appendChild(card);
-      frag.appendChild(wrap);
+    [].forEach.call(card.querySelectorAll('.place-card__action'), function (btn) {
+      if (st[btn.dataset.action]) btn.classList.add('is-on');
     });
 
-    els.grid.innerHTML = '';
+    wrap.appendChild(card);
+    return wrap;
+  }
+
+  function renderToc() {
+    var toc = document.getElementById('explore-toc');
+    if (!toc) return;
+
+    var linkParts = [];
+    SECTION_ORDER.forEach(function (sk) {
+      var has = places.some(function (p) {
+        return p.sectionKey === sk && placeVisible(p);
+      });
+      if (!has) return;
+      var meta = SECTION_LABELS[sk];
+      linkParts.push(
+        '<a class="explore-toc__link" href="#explore-' +
+          sk +
+          '">' +
+          escapeHtml(meta.title) +
+          '</a>'
+      );
+    });
+
+    if (!linkParts.length) {
+      toc.innerHTML = '';
+      toc.setAttribute('hidden', '');
+      return;
+    }
+
+    toc.removeAttribute('hidden');
+    toc.innerHTML =
+      '<span class="explore-toc__label">Jump to</span>' + linkParts.join('');
+  }
+
+  function renderSections() {
+    els.main.innerHTML = '';
+    var any = false;
+
+    SECTION_ORDER.forEach(function (sk) {
+      var inSection = places.filter(function (p) {
+        return p.sectionKey === sk && placeVisible(p);
+      });
+      if (!inSection.length) return;
+      any = true;
+
+      var meta = SECTION_LABELS[sk];
+      var section = document.createElement('section');
+      section.className = 'explore-cat';
+      section.id = 'explore-' + sk;
+
+      var head = document.createElement('header');
+      head.className = 'explore-cat__head';
+      var h2 = document.createElement('h2');
+      h2.className = 'explore-cat__title';
+      h2.textContent = meta.title;
+      var blurb = document.createElement('p');
+      blurb.className = 'explore-cat__blurb';
+      blurb.textContent = meta.blurb;
+      head.appendChild(h2);
+      head.appendChild(blurb);
+      section.appendChild(head);
+
+      var grid = document.createElement('div');
+      grid.className = 'explore-grid explore-grid--cat';
+      inSection.forEach(function (place) {
+        grid.appendChild(createPlaceWrap(place));
+      });
+      section.appendChild(grid);
+      els.main.appendChild(section);
+    });
+
     if (!any) {
       var empty = document.createElement('p');
       empty.className = 'explore-empty';
       empty.textContent = 'No places match your filters. Try All or clear the search.';
-      els.grid.appendChild(empty);
-    } else {
-      els.grid.appendChild(frag);
+      els.main.appendChild(empty);
     }
+
+    renderToc();
   }
 
   function fullRefresh() {
     renderChips();
     updateStatsUI();
-    renderGrid();
+    renderSections();
   }
 
   function softRefresh() {
     updateStatsUI();
-    renderGrid();
+    renderSections();
   }
 
   function showToast(message) {
@@ -534,7 +626,7 @@
       var pool = places.filter(placeVisible);
       if (!pool.length) pool = places.slice();
       var pick = pool[Math.floor(Math.random() * pool.length)];
-      var wrap = els.grid.querySelector('.explore-card-wrap[data-place-id="' + pick.id + '"]');
+      var wrap = els.main.querySelector('.explore-card-wrap[data-place-id="' + pick.id + '"]');
       if (wrap) {
         wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
         var card = wrap.querySelector('.place-card');
@@ -551,7 +643,7 @@
       showToast('Try: ' + pick.name);
     });
 
-    els.grid.addEventListener('click', function (e) {
+    els.main.addEventListener('click', function (e) {
       var actBtn = e.target.closest('.place-card__action');
       if (actBtn) {
         e.stopPropagation();
@@ -576,7 +668,7 @@
       if (place) openModal(place);
     });
 
-    els.grid.addEventListener('keydown', function (e) {
+    els.main.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       var card = e.target.closest('.place-card');
       if (!card || e.target.closest('.place-card__action')) return;
@@ -610,7 +702,7 @@
     els.countWant = document.getElementById('stat-want-count');
     els.countVis = document.getElementById('stat-visited-count');
     els.surprise = document.getElementById('explore-surprise');
-    els.grid = document.getElementById('explore-grid');
+    els.main = document.getElementById('explore-main');
     els.toast = document.getElementById('explore-toast');
     els.modalBackdrop = document.getElementById('explore-modal');
     els.modalTitle = document.getElementById('modal-title');

@@ -335,6 +335,9 @@
     .hero { padding: 30px 20px; }
     .card, .day-card { break-inside: avoid; }
     body { font-size: 12px; }
+    details.section .section-body { display: block !important; }
+    details.section > summary { list-style: none; }
+    details.section > summary .section-header::after { display: none; }
   }
 
   /* Tablet */
@@ -404,8 +407,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px 16px;
+    justify-content: flex-start;
+    gap: 12px 20px;
   }
   .site-logo {
     font-family: 'Playfair Display', Georgia, serif;
@@ -420,7 +423,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px 6px;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
   }
   .site-nav a {

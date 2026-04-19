@@ -1,4 +1,87 @@
-/* Eat & Explore — interactive page (Axis-inspired) */
+/* Eat & Explore — visitor guide by category */
+
+.explore-toc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(15, 29, 54, 0.04);
+}
+
+.explore-toc__label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  margin-right: 4px;
+}
+
+.explore-toc__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--gold-pale);
+  border: 1px solid rgba(197, 160, 48, 0.35);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.explore-toc__link:hover {
+  background: #fdf6e3;
+  border-color: var(--gold);
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.explore-toc__link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.explore-main {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.explore-cat {
+  scroll-margin-top: 96px;
+}
+
+.explore-cat__head {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.explore-cat__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+.explore-cat__blurb {
+  margin: 0;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.45;
+  max-width: 720px;
+}
+
+.explore-grid--cat {
+  margin: 0;
+}
 
 .explore-page-title {
   display: flex;
@@ -210,7 +293,7 @@
   height: 22px;
 }
 
-/* Grid */
+/* Card grids */
 .explore-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -604,11 +687,13 @@
 }
 
 .explore-empty {
-  grid-column: 1 / -1;
   text-align: center;
   padding: 48px 20px;
   color: var(--gray-500);
   font-size: 15px;
+  border: 1px dashed var(--gray-200);
+  border-radius: 12px;
+  background: var(--gray-50);
 }
 
 @media (max-width: 768px) {
