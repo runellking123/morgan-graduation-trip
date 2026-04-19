@@ -942,6 +942,110 @@
       feeSourceNote:
         'simon.com/mall/sawgrass-mills · Electric vehicle or valet stalls may bill hourly.',
     },
+    {
+      id: 'aventura-mall',
+      image: 'images/explore/aventura-mall.jpg',
+      sectionKey: 'shop',
+      name: 'Aventura Mall',
+      kind: 'shopping',
+      categories: ['Shopping', 'Kid-Friendly'],
+      address: '19501 Biscayne Blvd, Aventura, FL 33180',
+      phone: '(305) 935-1110',
+      website: 'https://www.aventuramall.com',
+      price: '$$',
+      rating: 4.6,
+      description:
+        'Major enclosed mall north of Miami — upscale anchors and a wide mix of shops; worth the drive if your group wants a big mall day.',
+      tags: ['Mall', 'Anchors'],
+      hours: 'Typically Mon–Sat 11 AM–9 PM, Sun 12–8 PM — confirm holidays.',
+      feeSchedule: [
+        { label: 'Mall entry', value: 'Free' },
+        {
+          label: 'Parking (multi-level garages)',
+          value: 'Usually free — premium/valet may charge',
+        },
+      ],
+      feeSourceNote:
+        'aventuramall.com · From Fort Lauderdale, plan ~30–40 min depending on traffic.',
+    },
+    {
+      id: 'broward-mall',
+      image: 'images/explore/westfield-broward.jpg',
+      sectionKey: 'shop',
+      name: 'Broward Mall',
+      kind: 'shopping',
+      categories: ['Shopping', 'Kid-Friendly'],
+      address: '8000 W Broward Blvd, Plantation, FL 33388',
+      phone: '(954) 473-8100',
+      website: 'https://visitbrowardmall.com',
+      price: '$$',
+      rating: 4.4,
+      description:
+        'Regional mall in Plantation (long known as Westfield Broward) — closer than Sawgrass if you want department stores without as long a haul.',
+      tags: ['Mall', 'Regional'],
+      hours: 'Typically Mon–Sat 10 AM–9 PM, Sun 11 AM–6 PM — confirm on site.',
+      feeSchedule: [
+        { label: 'Mall entry', value: 'Free' },
+        {
+          label: 'Parking',
+          value: 'Large free lots; premium or reserved spots may charge',
+        },
+      ],
+      feeSourceNote:
+        'visitbrowardmall.com · ~20–25 min west of downtown Fort Lauderdale in normal traffic.',
+    },
+    {
+      id: 'bal-harbour-shops',
+      image: 'images/explore/bal-harbour-shops.jpg',
+      sectionKey: 'shop',
+      name: 'Bal Harbour Shops',
+      kind: 'shopping',
+      categories: ['Shopping'],
+      address: '9700 Collins Ave, Bal Harbour, FL 33154',
+      phone: '(305) 866-0311',
+      website: 'https://balharbourshops.com',
+      price: '$$$',
+      rating: 4.7,
+      description:
+        'Open-air luxury destination — designer boutiques and polished dining; window-shopping is an event.',
+      tags: ['Luxury', 'Walkable'],
+      hours: 'Typically Mon–Sat 11 AM–8 PM, Sun 12–7 PM — verify holidays.',
+      feeSchedule: [
+        { label: 'Courtyard entry', value: 'Free' },
+        {
+          label: 'Parking (garage/valet)',
+          value: 'Paid — see mall site',
+        },
+      ],
+      feeSourceNote:
+        'balharbourshops.com · About 35–45 min south via A1A/I-95 depending on traffic.',
+    },
+    {
+      id: 'coral-square-mall',
+      image: 'images/explore/coral-square-mall.jpg',
+      sectionKey: 'shop',
+      name: 'Coral Square',
+      kind: 'shopping',
+      categories: ['Shopping', 'Kid-Friendly'],
+      address: '9469 W Atlantic Blvd, Coral Springs, FL 33071',
+      phone: '(954) 755-5550',
+      website: 'https://www.simon.com/mall/coral-square',
+      price: '$$',
+      rating: 4.3,
+      description:
+        'Simon-managed mall in Coral Springs — straightforward indoor shopping northwest of Fort Lauderdale.',
+      tags: ['Mall', 'Regional'],
+      hours: 'Typically Mon–Sat 11 AM–8 PM, Sun 12–6 PM — check Simon for holidays.',
+      feeSchedule: [
+        { label: 'Mall entry', value: 'Free' },
+        {
+          label: 'Parking',
+          value: 'Free surface lots',
+        },
+      ],
+      feeSourceNote:
+        'simon.com/mall/coral-square · ~25–35 min northwest of central Fort Lauderdale.',
+    },
   ];
 
   function telHref(phone) {
