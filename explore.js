@@ -26,8 +26,8 @@
       blurb: 'River cruises, the Riverwalk, history on the water, and classic South Florida views.',
     },
     play: {
-      title: 'Museums & thrills',
-      blurb: 'Indoor fun when you want a break from the heat — art, science, and hands-on exhibits.',
+      title: 'Museums & indoor fun',
+      blurb: 'Cool, indoor spots when you need a break from the sun — art, science, and kid-friendly exhibits.',
     },
     outdoors: {
       title: 'Beach, parks & nature',
