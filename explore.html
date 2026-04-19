@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0F1D36">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="explore.css">
+
+<title>Eat & Explore — Morgan King Graduation Trip</title>
+<meta name="description" content="Interactive guide to Fort Lauderdale restaurants and kid-friendly activities for the graduation trip.">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="index.html">Dr. Morgan King</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="travel.html">Travel &amp; budget</a>
+      <a href="schedule.html">Ceremony &amp; schedule</a>
+      <a href="explore.html" aria-current="page">Eat &amp; explore</a>
+      <a href="checklist.html">Checklist</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container explore-page">
+  <div class="page-head">
+    <h1 class="page-title explore-page-title">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 3v18M18 3v18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M9 8v8M15 8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>Eat &amp; Explore</span>
+    </h1>
+    <p class="page-intro">Filter restaurants and activities, save favorites, and open details when you are ready to book or visit.</p>
+  </div>
+
+  <div class="explore-search-wrap">
+    <label for="explore-search" class="visually-hidden">Search places by name</label>
+    <input type="search" id="explore-search" class="explore-search" placeholder="Search by name…" autocomplete="off">
+  </div>
+
+  <div id="explore-chips" class="explore-chips" role="toolbar" aria-label="Category filters"></div>
+
+  <div class="explore-stats" role="group" aria-label="Your lists">
+    <button type="button" class="explore-stat" id="stat-favorites">
+      <div class="explore-stat__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="explore-stat__label">Favorites</div>
+      <div class="explore-stat__count" id="stat-favorites-count">0</div>
+    </button>
+    <button type="button" class="explore-stat" id="stat-want">
+      <div class="explore-stat__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="explore-stat__label">Want to go</div>
+      <div class="explore-stat__count" id="stat-want-count">0</div>
+    </button>
+    <button type="button" class="explore-stat" id="stat-visited">
+      <div class="explore-stat__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="explore-stat__label">Visited</div>
+      <div class="explore-stat__count" id="stat-visited-count">0</div>
+    </button>
+  </div>
+
+  <div class="explore-surprise-wrap">
+    <button type="button" class="explore-surprise" id="explore-surprise">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1" fill="currentColor"/>
+        <circle cx="15.5" cy="15.5" r="1" fill="currentColor"/>
+        <circle cx="15.5" cy="8.5" r="1" fill="currentColor"/>
+        <circle cx="8.5" cy="15.5" r="1" fill="currentColor"/>
+      </svg>
+      Surprise me
+    </button>
+  </div>
+
+  <div id="explore-grid" class="explore-grid" aria-live="polite"></div>
+</main>
+
+<div id="explore-toast" class="explore-toast" role="status"></div>
+
+<div id="explore-modal" class="explore-modal-backdrop" aria-hidden="true">
+  <div class="explore-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="explore-modal__head">
+      <div>
+        <span id="modal-badge" class="place-card__badge place-card__badge--dining" style="position:static;display:inline-block;margin-bottom:8px;">Dining</span>
+        <h2 id="modal-title" class="explore-modal__title">Place</h2>
+      </div>
+      <button type="button" class="explore-modal__close" id="modal-close-x" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="modal-body" class="explore-modal__body"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div style="font-size: 14px; letter-spacing: 4px; color: var(--gold); margin-bottom: 12px;">&#9733; &#9733; &#9733;</div>
+  <p style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin-bottom: 4px;"><strong>Congratulations, Dr. Morgan King!</strong></p>
+  <p style="color: var(--gold); font-weight: 600; margin-bottom: 16px;">Capella University &bull; Doctoral Graduation &bull; June 27, 2026</p>
+  <p style="color: var(--gray-500); font-size: 12px;">Trip plan prepared April 2026. Verify all prices, availability, and contact information before booking.</p>
+</div>
+
+<script src="explore.js" defer></script>
+</body>
+</html>
