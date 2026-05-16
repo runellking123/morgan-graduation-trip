@@ -3,7 +3,7 @@
 /* ---------- HERO ---------- */
 .about-hero {
   position: relative;
-  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 40%, var(--navy-mid) 70%, #2A4A7F 100%);
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 42%, var(--navy-mid) 72%, #2a5568 100%);
   overflow: hidden;
   min-height: 520px;
 }
@@ -11,7 +11,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 80%, rgba(197,160,48,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 80%, rgba(var(--gold-rgb), 0.14) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%);
   z-index: 1;
 }
@@ -29,7 +29,7 @@
   width: 280px;
   height: auto;
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 4px rgba(197,160,48,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 4px rgba(var(--gold-rgb), 0.35);
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -210,7 +210,7 @@
   height: 20px;
   left: -35px;
   top: 20px;
-  box-shadow: 0 0 0 4px rgba(197,160,48,0.2), 0 0 16px rgba(197,160,48,0.3);
+  box-shadow: 0 0 0 4px rgba(var(--gold-rgb), 0.22), 0 0 16px rgba(var(--gold-rgb), 0.32);
 }
 
 .about-timeline__card {

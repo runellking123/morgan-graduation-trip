@@ -1,12 +1,15 @@
 :root {
-    --navy: #0F1D36;
-    --navy-light: #1E3258;
-    --navy-mid: #263F6A;
-    --gold: #C5A030;
-    --gold-bright: #D4AF37;
-    --gold-light: #E8D48B;
-    --gold-pale: #FBF5E0;
-    --cream: #FAF8F3;
+    /* Capella University brand palette — sourced from capella.edu theme tokens */
+    --navy-rgb: 15, 51, 84;
+    --gold-rgb: 214, 179, 107;
+    --navy: #0f3354;
+    --navy-light: #1a4f6e;
+    --navy-mid: #356573;
+    --gold: #d6b36b;
+    --gold-bright: #f1ab4a;
+    --gold-light: #e5cf9e;
+    --gold-pale: #f7f1e8;
+    --cream: #faf9f6;
     --white: #FFFFFF;
     --gray-50: #F8F9FA;
     --gray-100: #F1F3F5;
@@ -15,9 +18,9 @@
     --gray-500: #868E96;
     --gray-700: #495057;
     --gray-900: #212529;
-    --green: #2B8A3E;
-    --red: #C92A2A;
-    --blue: #1971C2;
+    --green: #66b114;
+    --red: #b62025;
+    --blue: #009cde;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,8 +29,8 @@
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--cream);
     background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(197,160,48,0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(15,29,54,0.02) 0%, transparent 50%);
+      radial-gradient(ellipse at 20% 50%, rgba(var(--gold-rgb), 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(var(--navy-rgb), 0.03) 0%, transparent 50%);
     color: var(--gray-900);
     line-height: 1.6;
     font-size: 15px;
@@ -39,7 +42,7 @@
   /* ===== HERO ===== */
   .hero {
     background:
-      linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 40%, var(--navy-mid) 70%, #2A4A7F 100%);
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 42%, var(--navy-mid) 72%, #2a5568 100%);
     color: var(--white);
     text-align: center;
     padding: 0;
@@ -52,7 +55,7 @@
     position: absolute;
     top: 0; left: 0;
     width: 200px; height: 200px;
-    background: linear-gradient(135deg, rgba(197,160,48,0.15) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.18) 0%, transparent 60%);
     z-index: 1;
   }
   .hero::after {
@@ -60,7 +63,7 @@
     position: absolute;
     bottom: 0; right: 0;
     width: 200px; height: 200px;
-    background: linear-gradient(315deg, rgba(197,160,48,0.15) 0%, transparent 60%);
+    background: linear-gradient(315deg, rgba(var(--gold-rgb), 0.18) 0%, transparent 60%);
     z-index: 1;
   }
   /* Decorative gold lines */
@@ -82,6 +85,21 @@
     height: auto;
     margin: 0 auto 24px;
     border-radius: 10px;
+  }
+
+  .hero-brand {
+    display: inline-block;
+    margin: 0 auto 14px;
+    padding: 6px 14px;
+    border: 1px solid rgba(var(--gold-rgb), 0.55);
+    border-radius: 999px;
+    font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(0, 0, 0, 0.2);
   }
 
   .hero h1 {
@@ -180,7 +198,7 @@
     border-radius: 12px;
     margin-right: 6px;
     margin-bottom: 4px;
-    border: 1px solid rgba(197,160,48,0.2);
+    border: 1px solid rgba(var(--gold-rgb), 0.28);
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
@@ -470,14 +488,33 @@
     gap: 12px 20px;
   }
   .site-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 17px;
     font-weight: 700;
     color: var(--gold);
     text-decoration: none;
     letter-spacing: 0.2px;
+    line-height: 1.15;
   }
   .site-logo:hover { color: var(--gold-bright); text-decoration: none; }
+  .site-logo:hover .site-logo__affiliation {
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .site-logo__title {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .site-logo__affiliation {
+    font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
   .site-nav {
     display: flex;
     flex-wrap: wrap;
@@ -608,7 +645,7 @@
     height: auto;
     margin: 0 auto 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 28px rgba(15, 29, 54, 0.14);
+    box-shadow: 0 8px 28px rgba(var(--navy-rgb), 0.14);
   }
   .about-page .card h3:not(:first-child) {
     margin-top: 22px;
